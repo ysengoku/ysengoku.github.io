@@ -4,20 +4,29 @@
   --bs-link-hover-color: #cc4560;
 }
 
+/* .navbar {
+  --bs-navbar-color: #256082;
+} */
+
 .nav-link {
   color: #256082 !important;
 }
-  
 .nav-link:hover {
-  color: #cc4560 !important; /* ホバー時の色 */
+  color: #cc4560 !important;
 }
 
 /* On scroll */
 #mainNav.navbar-shrink {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: #256082;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #256082;
 }
 #mainNav.navbar-shrink .nav-link {
-  color: #fff !important;
+  color: #f5f5ef !important;
 }
+
+/*
+.navbar-toggler {
+  background-color: #256082;
+}
+*/
