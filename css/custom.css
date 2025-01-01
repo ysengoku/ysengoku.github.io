@@ -1,32 +1,49 @@
 :root {
-  --bs-primary-rgb: 204, 69, 96; /* Updated RGB value for #cc4560 */
-  --bs-link-color: #cc4560;
-  --bs-link-hover-color: #cc4560;
+  --bs-primary-rgb: 174, 56, 85;
+  --bs-link-color: #AE3855;
+  --bs-link-hover-color: #AE3855;
 }
-
-/* .navbar {
-  --bs-navbar-color: #256082;
-} */
 
 .nav-link {
-  color: #256082 !important;
+  color: #1C4B65 !important;
 }
 .nav-link:hover {
-  color: #cc4560 !important;
+  color: #AE3855 !important;
 }
 
 /* On scroll */
 #mainNav.navbar-shrink {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #256082;
+  background-color: #1C4B65;
 }
 #mainNav.navbar-shrink .nav-link {
   color: #f5f5ef !important;
 }
 
-/*
-.navbar-toggler {
-  background-color: #256082;
+/* Content */
+h5 {
+  font-size: 1.0em;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
-*/
+
+.timeline > li {
+  margin-bottom: 32px;
+}
+
+/* Footer */ 
+.btn-social {
+  background-color: #AE3855;
+  border-color: #AE3855;
+}
+.btn-social:hover {
+  background-color: #1C4B65;
+  border-color: #1C4B65;
+}
+
+.cta {
+  color: #AE3855;
+  font-size: 1.2em;
+}
