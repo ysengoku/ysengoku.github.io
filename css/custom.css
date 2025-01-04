@@ -4,9 +4,6 @@
   --bs-link-hover-color: #AE3855;
 }
 
-.nav-link {
-  color: #1C4B65 !important;
-}
 .nav-link:hover {
   color: #AE3855 !important;
 }
