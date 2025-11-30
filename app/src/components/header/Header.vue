@@ -1,9 +1,9 @@
 <template>
   <header ref="headerRef" id="header" class="relative w-full p-8">
     <div ref="vantaRef" class="absolute inset-0 z-0"></div>
-    <div class="relative z-10 m-8 flex flex-col items-center justify-center h-full text-center text-white">
+    <div class="relative z-10 m-8 flex flex-col items-center justify-center h-full text-center">
       <div class="text-3xl mb-4">Full-stack Developer</div>
-      <h2 class="text-5xl font-bold mb-16">Yuko SENGOKU</h2>
+      <h1 class="text-6xl font-bold mb-16">Yuko SENGOKU</h1>
       <a class="btn" href="https://github.com/ysengoku">My GitHub</a>
     </div>
   </header>

@@ -1,0 +1,6 @@
+.nav-link {
+  color: var(--ys-white);
+}
+.nav-link:hover {
+  color: var(--ys-crimson);
+}

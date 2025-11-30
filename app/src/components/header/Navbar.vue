@@ -1,18 +1,42 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo2.svg" alt="..." /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsiaria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars ms-1"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Latest works</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">Background</a></li>
-            </ul>
-        </div>
+  <nav class="fixed top-0 w-full z-50 text-white">
+    <div class="flex items-center justify-between w-full px-8 py-4">
+      <a href="#page-top" class="flex items-center mt-2">
+        <img src="../../assets/img/navbar-logo.svg" alt="logo" class="lg:h-10 h-8" />
+      </a>
+
+      <div
+        @click="open = !open"
+        class="lg:hidden flex items-center space-x-2 cursor-pointer"
+      >
+        <span>Menu</span>
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <ul class="hidden lg:flex lg:flex-row lg:space-x-10 text-sm">
+        <li><a href="#skills" class="block py-2 text-lg nav-link">Skills</a></li>
+        <li><a href="#projects" class="block py-2 text-lg nav-link">Latest works</a></li>
+        <li><a href="#about" class="block py-2 text-lg nav-link">Background</a></li>
+      </ul>
     </div>
+
+    <transition name="fade">
+      <ul
+        v-if="open"
+        class="lg:hidden flex flex-col space-y-2 px-8 py-4 bg-gray-900/95"
+      >
+        <li><a href="#skills" class="block py-2 text-lg nav-link">Skills</a></li>
+        <li><a href="#projects" class="block py-2 text-lg nav-link">Latest works</a></li>
+        <li><a href="#about" class="block py-2 text-lg nav-link">Background</a></li>
+      </ul>
+    </transition>
   </nav>
 </template>
+
+<script setup>
+import { ref } from "vue"
+const open = ref(false)
+</script>
+
+<style>
+</style>
