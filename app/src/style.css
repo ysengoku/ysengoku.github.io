@@ -1,0 +1,60 @@
+@import "tailwindcss";
+/* @import "./styles/styles.css";
+@import "./styles/custom.css"; */
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --ys-crimson: #AE3855;
+  --ys-crimson-rgb: 174, 56, 85;
+  --ys-crimson-dark: #8C3047;
+
+  --ys-white: #DFD3D6;
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+.btn {
+  color: var(--ys-white);
+  background-color: var(--ys-crimson);
+  padding: 1.25rem 2.5rem;
+  margin: 2.5rem;
+  border-radius: 0.375rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--ys-crimson-dark);
+}
+
+#app {
+  width: 100vw;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
