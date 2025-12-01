@@ -3,8 +3,7 @@ import type { TimelineItem } from "../types/timeline";
 export const timelineItems: TimelineItem[] = [
   {
     id: 1,
-    side: "right",
-    image: "/assets/img/about/1.jpg",
+    image: "/img/about/1.jpg",
     period: "November 2023 - Present",
     title: "Preparing for IT Architecture Expert Certification (RNCP7)",
     subtitle: "42 Lyon Auvergne-Rhône-Alpes",
@@ -12,8 +11,7 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 2,
-    side: "left",
-    image: "../../../assets/img/about/2.jpg",
+    image: "/img/about/2.jpg",
     period: "2020",
     title: "Communication and Marketing Officer",
     subtitle: "Champagne Pierre Laurent (Saulchery, France)",
@@ -21,8 +19,7 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 3,
-    side: "right",
-    image: "../../../assets/img/about/3.jpg",
+    image: "/img/about/3.jpg",
     period: "2018 - 2020",
     title: "Master in Tourism",
     subtitle: "University of Lyon 2",
@@ -30,8 +27,7 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 4,
-    side: "left",
-    image: "../../../assets/img/about/4.jpg",
+    image: "/img/about/4.jpg",
     period: "2014 - 2018",
     title: "Communication Manager",
     subtitle: "AJ-France (Kyoto, Japan)",
@@ -39,17 +35,15 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 5,
-    side: "right",
-    image: "../../../assets/img/about/5.jpg",
-    period: "—",
+    image: "/img/about/5.jpg",
+    period: "",
     title: "International Travel Counselor & Tour Planner",
     subtitle: "HIS | Hankyu travel international | NTS (Nagoya, Japan)",
     description: "Specialized in FIT and corporate business travel, contributing to multiple international travel industry projects."
   },
   {
     id: 6,
-    side: "left",
-    image: "../../../assets/img/about/6.jpg",
+    image: "/img/about/6.jpg",
     period: "1995 - 1999",
     title: "Bachelor in English Linguistics",
     subtitle: "University of Nagoya",

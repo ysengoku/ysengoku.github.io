@@ -2,7 +2,7 @@
   <nav class="fixed top-0 w-full z-50 text-white">
     <div class="flex items-center justify-between w-full px-8 py-4">
       <a href="#page-top" class="flex items-center mt-2">
-        <img src="../../assets/img/navbar-logo.svg" alt="logo" class="lg:h-10 h-8" />
+        <img src="/img/navbar-logo.svg" alt="logo" class="lg:h-10 h-8" />
       </a>
 
       <div
