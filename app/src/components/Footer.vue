@@ -17,13 +17,13 @@
 
 <style scoped>
 .cta {
-  color: var(--ys-crimson);
+  color: var(--ys-primary-500);
   font-weight: bold;
 }
 
 .btn-social {
-  background-color: var(--ys-crimson);
-  border-color: var(--ys-crimson);
+  background-color: var(--ys-primary-500);
+  border-color: var(--ys-primary-500);
   height: 2.4rem;
   width: 2.4rem;
   display: inline-flex;

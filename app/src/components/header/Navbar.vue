@@ -39,4 +39,13 @@ const open = ref(false)
 </script>
 
 <style>
+nav {
+  background-color: rgba(var(--ys-grey-700-rgb), 0.8);
+}
+.nav-link {
+  color: var(--ys-grey-100);
+}
+.nav-link:hover {
+  color: var(--ys-primary-500);
+}
 </style>

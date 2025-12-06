@@ -11,15 +11,15 @@
 
 <script setup lang="ts">
   import { onMounted, onUnmounted, ref } from 'vue'
-  import * as THREE from 'three'
 
   const vantaRef = ref<HTMLElement | null>(null)
   const headerRef = ref<HTMLElement | null>(null)
   let vantaEffect: any = null
 
   onMounted(() => {
-    const { clientHeight, clientWidth } = headerRef.value;
-    if (vantaRef.value && window.VANTA) {
+    const el = headerRef.value;
+    if (el && vantaRef.value && (window as any).VANTA) {
+      const { clientHeight, clientWidth } = el;
       vantaEffect = (window as any).VANTA.NET({
         el: vantaRef.value,
         mouseControls: true,
@@ -29,7 +29,7 @@
         minWidth: clientWidth,
         scale: 1,
         scaleMobile: 1,
-        color: "#8C3047",
+        color: "#762338",
         backgroundColor: "#07293D",
         points: 20,
         maxDistance: 20,

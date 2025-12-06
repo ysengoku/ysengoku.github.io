@@ -1,5 +1,5 @@
 <template>
-  <li class="mb-16 flex flex-col md:flex-row-reverse md:items-center">
+  <li class="mb-4 flex flex-col md:flex-row-reverse md:items-center">
     <div class="timeline-image">
       <img 
         :src="data.image"
@@ -8,7 +8,7 @@
     </div>
 
     <div :class="data.id % 2 === 1 ? 'timeline-panel-right' : 'timeline-panel-left'">
-      <div class="p-6 text-start">
+      <div class="p-6">
         <p class="text-sm">
           {{ data.period }}
         </p>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TimelineItem } from "@/types/timeline";
+import type { TimelineItem } from 'src/models/timeline';
 
 defineProps<{
   data: TimelineItem;

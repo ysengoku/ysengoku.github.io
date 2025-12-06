@@ -13,7 +13,7 @@
         <div class="timeline-line"></div>
 
         <TimelineItemComponent
-          v-for="item in timelineItems"
+          v-for="(item, index) in timelineItems"
           :key="item.id"
           :data="item"
         />
@@ -24,18 +24,41 @@
 </template>
 
 <script setup lang="ts">
-import { timelineItems } from '../../../data/timelineData';
+import { onMounted, nextTick } from 'vue';
+import { timelineItems } from '@data/timelineData';
 import TimelineItemComponent from './TimelineItemComponent.vue';
+
+onMounted(async () => {
+  await nextTick();
+
+  const container = document.querySelector('#about ul') as HTMLElement;
+  const firstLi = container?.querySelector('li') as HTMLElement;
+  const firstImg = firstLi?.querySelector('.timeline-image') as HTMLElement;
+  const lastLi = container?.lastElementChild as HTMLElement;
+  const lastImg = lastLi?.querySelector('.timeline-image') as HTMLElement;
+
+  const containerRect = container?.getBoundingClientRect();
+  const firstImgRect = firstImg?.getBoundingClientRect();
+  const lastImgRect = lastImg?.getBoundingClientRect();
+  if (!containerRect || !firstImgRect || !lastImgRect) {
+    return;
+  }
+
+  const relativeTop = firstImgRect.top - containerRect.top;
+  const lineHeight = lastImgRect.bottom - firstImgRect.top;
+  document.documentElement.style.setProperty('--timeline-start', `${relativeTop}px`);
+  document.documentElement.style.setProperty('--timeline-height', `${lineHeight}px`);
+});
 </script>
 
 <style>
 .timeline-line {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: var(--timeline-start, 0px);
   width: 2px;
-  height: 100%;
-  background-color: var(--ys-crimson);
+  height: var(--timeline-height);
+  background-color: var(--ys-primary-500);
   transform: translateX(-50%);
 }
 
@@ -58,10 +81,12 @@ import TimelineItemComponent from './TimelineItemComponent.vue';
 }
 
 .timeline-panel-right {
+  text-align: start;
   margin-left: calc(50% + 64px);
 }
 
 .timeline-panel-left {
+  text-align: end;
   margin-right: calc(50% + 64px);
 }
 
@@ -76,6 +101,7 @@ import TimelineItemComponent from './TimelineItemComponent.vue';
 
   .timeline-panel-right,
   .timeline-panel-left {
+    text-align: center;
     margin: 0 1rem;
   }
 }

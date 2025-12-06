@@ -51,7 +51,7 @@
 
 <style scoped>
 span {
-  color: var(--ys-white);
-  background-color: var(--ys-crimson);
+  color: var(--ys-grey-100);
+  background-color: var(--ys-primary-500);
 }
 </style>
