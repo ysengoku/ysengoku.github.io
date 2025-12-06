@@ -1,24 +1,60 @@
 @import "tailwindcss";
-@import "./styles/header.css";
-/* @import "./styles/styles.css";
-@import "./styles/custom.css"; */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  --ys-crimson: #AE3855;
-  --ys-crimson-rgb: 174, 56, 85;
-  --ys-crimson-dark: #8C3047;
+  --ys-primary-700: #42101c;
+  --ys-primary-600: #762338;
+  --ys-primary-500: #AE3855;
+  --ys-primary-400: #e25676;
+  --ys-primary-300: #e995a4;
+  --ys-primary-200: #f2cad0;
+  --ys-primary-100: #fbeeef;
+  --ys-primary-700-rgb: 66,16,28;
+  --ys-primary-600-rgb: 118,35,56;
+  --ys-primary-500-rgb: 174,56,85;
+  --ys-primary-400-rgb: 226,86,118;
+  --ys-primary-300-rgb: 233,149,164;
+  --ys-primary-200-rgb: 242,202,208;
+  --ys-primary-100-rgb: 251,238,239;
 
-  --ys-white: #DFD3D6;
+  --ys-secondary-700: #02121e;
+  --ys-secondary-600: #07293D;
+  --ys-secondary-500: #134a6a;
+  --ys-secondary-400: #216e9b;
+  --ys-secondary-300: #2f94ce;
+  --ys-secondary-200: #61baf8;
+  --ys-secondary-100: #beddfc;
+  --ys-secondary-700-rgb: 2,18,30;
+  --ys-secondary-600-rgb: 7,41,61;
+  --ys-secondary-500-rgb: 19,74,106;
+  --ys-secondary-400-rgb: 33,110,155;
+  --ys-secondary-300-rgb: 47,148,206;
+  --ys-secondary-200-rgb: 97,186,248;
+  --ys-secondary-100-rgb: 190,221,252;
+
+  --ys-grey-700: #262222;
+  --ys-grey-600: #474041;
+  --ys-grey-500: #6b6162;
+  --ys-grey-400: #908586;
+  --ys-grey-300: #b2abac;
+  --ys-grey-200: #d6d3d4;
+  --ys-grey-100: #f1f0f0;
+  --ys-grey-700-rgb: 38,34,34;
+  --ys-grey-600-rgb: 71,64,65;
+  --ys-grey-500-rgb: 107,97,98;
+  --ys-grey-400-rgb: 144,133,134;
+  --ys-grey-300-rgb: 178,171,172;
+  --ys-grey-200-rgb: 214,211,212;
+  --ys-grey-100-rgb: 241,240,240;
 
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
 
   color-scheme: light dark;
-  color: var(--ys-white);
-  background-color: #242424;
+  color: var(--ys-grey-100);
+  background-color: var(--ys-grey-700);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,17 +63,17 @@
 }
 
 h1 {
-  color: var(--ys-white);
+  color: var(--ys-grey-100);
 }
 
 h2 {
-  color: var(--ys-crimson);
+  color: var(--ys-primary-500);
 }
 
 button,
 .btn {
-  color: var(--ys-white);
-  background-color: var(--ys-crimson);
+  color: var(--ys-grey-100);
+  background-color: var(--ys-primary-500);
   padding: 1.25rem 2.5rem;
   margin: 2.5rem;
   border-radius: 0.375rem;
@@ -47,7 +83,7 @@ button,
 
 button:hover,
 .btn:hover {
-  background-color: var(--ys-crimson-dark);
+  background-color: var(--ys-primary-500-dark);
 }
 
 #app {
@@ -57,13 +93,13 @@ button:hover,
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--ys-black);
+    background-color: var(--ys-grey-100);
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--ys-grey-100);
   }
 }
