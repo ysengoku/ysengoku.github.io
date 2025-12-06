@@ -8,7 +8,7 @@ export default defineConfig({
     alias: {
       '@components': path.resolve(__dirname, './src/components'),
       '@data': path.resolve(__dirname, './src/data'),
-      '@types': path.resolve(__dirname, './src/types'),
+      '@models': path.resolve(__dirname, './src/models'),
     },
   },
   plugins: [vue(), tailwindcss()],

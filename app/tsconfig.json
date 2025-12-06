@@ -3,12 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@data/*": ["src/data/*"],
-      "@types/*": ["src/types/*"],
-      "@components": ["src/components"],
-      "@data": ["src/data"],
-      "@types": ["src/types"]
+      "@components/*": ["src/components/*.ts", "src/components/*"],
+      "@data/*": ["src/data/*.ts", "src/data/*"],
+      "@models/*": ["src/models/*.ts", "src/models/*"],
+      "@components": ["src/components/index.ts", "src/components"],
+      "@data": ["src/data/index.ts", "src/data"],
+      "@models": ["src/models/index.ts", "src/models"]
     }
   },
   "references": [
