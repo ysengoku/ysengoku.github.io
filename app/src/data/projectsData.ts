@@ -67,4 +67,26 @@ export const projectItems: ProjectItem[] = [
     techTools: "MVVM design pattern, UX/UI design",
     github: "https://github.com/ysengoku/iOSApp_AFPExtended-Harmony"
   },
+    {
+    id: 7,
+    title: "ft_transcendence",
+    subtitle: "Social gaming platform featuring Pong and live chat, built as a Single Page Application",
+    intro: "Full-stack Single Page Application developed by a five-member team as part of the 42 curriculum, implementing a real-time social gaming platform with integrated live chat.",
+    image: "/img/portfolio/transcendence.jpg",
+    description: "It provides JWT/OAuth authentication, user profiles, game statistics, matchmaking, tournaments, and a complete multiplayer system. Built with vanilla JavaScript, Django, and PostgreSQL, containerized with docker-compose, and served over HTTPS. The Pong game is rendered with Three.js using custom Blender models, supporting both local and online modes with optional gameplay modifiers. The UI is responsive and includes dark/light themes.",
+    techLanguage: "JavaScript, Django/Python",
+    techTools: "Single Page Application, RESTful API, WebSocket, Docker, PostgreSQL",
+    github: "https://github.com/ysengoku/42-ft_transcendence"
+  },
+  {
+    id: 6,
+    title: "Mobilix",
+    subtitle: "iOS application prototype",
+    intro: "First iOS app prototype developed as part of the Apple Foundation Program",
+    image: "/img/portfolio/6.jpg",
+    description: "Developed in a 4-person team during the Apple Foundation Program, Mobilix is an iOS app prototype designed to promote soft mobility. We implemented a system where users earn points by using partnered transportation services, with a map feature to locate and reserve available options nearby.",
+    techLanguage: "Swift, SwiftUI",
+    techTools: "UX/UI design",
+    github: "https://github.com/ysengoku/iOSApp_AFP-Mobilix"
+  }
 ];

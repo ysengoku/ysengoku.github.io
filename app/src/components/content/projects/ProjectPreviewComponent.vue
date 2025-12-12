@@ -1,10 +1,10 @@
   <template>
     <div
-      class="project-preview-wrapper flex-col flex-wrap text-wrap lg:w-104 md:w-96 w-72 flex-shrink-0">
-      <div class="project-preview-hover md:h-72 h-48">
+      class="project-preview-wrapper flex-col flex-wrap text-wrap flex-shrink-0">
+      <div class="project-preview-hover h-100">
         <div class="text-2xl">Show detail</div>
       </div>
-      <img :src="item.image" class="md:h-72 h-48"  />
+      <img :src="item.image" />
 
       <h4 class="text-xl font-semibold my-3">
         {{ item.title }}
