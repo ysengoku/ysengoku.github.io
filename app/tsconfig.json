@@ -2,6 +2,7 @@
   "files": [],
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "preserve",
     "paths": {
       "@components/*": ["src/components/*.ts", "src/components/*"],
       "@data/*": ["src/data/*.ts", "src/data/*"],

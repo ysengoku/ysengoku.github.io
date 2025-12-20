@@ -14,7 +14,7 @@
 
         <TimelineItemComponent
           v-for="(item, index) in timelineItems"
-          :key="item.id"
+          :key="index"
           :data="item"
         />
       </ul>

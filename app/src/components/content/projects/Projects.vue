@@ -32,13 +32,14 @@ import ProjectPreviewComponent from './ProjectPreviewComponent.vue';
 import { projectItems } from '@data/projectsData';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
 const breakpoints = {
   1440: { slidesPerView: 4 },
-  1280: { slidesPerView: 3 },
   1024: { slidesPerView: 3 },
   768:  { slidesPerView: 2 },
   640:  { slidesPerView: 1 },
@@ -73,6 +74,10 @@ function getSlideClass(index: number) {
 .ui-carousel .swiper-slide-next {
   transform: scale(0.8);
   opacity: 0.6;
+}
+
+:deep(.ui-carousel .swiper-slide-active):hover .project-preview-hover {
+  opacity: 0.8;
 }
 
 :deep(.swiper-button-prev),
