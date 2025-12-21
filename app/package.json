@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.ts,.vue src",
+    "lint:fix": "eslint --ext .js,.ts,.vue src --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,vue,css,scss,md,json}\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
@@ -23,6 +26,14 @@
     "@vue/tsconfig": "^0.8.1",
     "typescript": "~5.8.3",
     "vite": "^7.1.7",
-    "vue-tsc": "^3.0.7"
+    "vue-tsc": "^3.0.7",
+    "eslint": "^8.48.0",
+    "vue-eslint-parser": "^9.1.0",
+    "eslint-plugin-vue": "^9.16.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.1.0",
+    "prettier": "^3.7.0"
   }
 }

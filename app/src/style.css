@@ -1,37 +1,37 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --ys-primary-700: #42101c;
   --ys-primary-600: #762338;
-  --ys-primary-500: #AE3855;
+  --ys-primary-500: #ae3855;
   --ys-primary-400: #e25676;
   --ys-primary-300: #e995a4;
   --ys-primary-200: #f2cad0;
   --ys-primary-100: #fbeeef;
-  --ys-primary-700-rgb: 66,16,28;
-  --ys-primary-600-rgb: 118,35,56;
-  --ys-primary-500-rgb: 174,56,85;
-  --ys-primary-400-rgb: 226,86,118;
-  --ys-primary-300-rgb: 233,149,164;
-  --ys-primary-200-rgb: 242,202,208;
-  --ys-primary-100-rgb: 251,238,239;
+  --ys-primary-700-rgb: 66, 16, 28;
+  --ys-primary-600-rgb: 118, 35, 56;
+  --ys-primary-500-rgb: 174, 56, 85;
+  --ys-primary-400-rgb: 226, 86, 118;
+  --ys-primary-300-rgb: 233, 149, 164;
+  --ys-primary-200-rgb: 242, 202, 208;
+  --ys-primary-100-rgb: 251, 238, 239;
 
   --ys-secondary-700: #02121e;
-  --ys-secondary-600: #07293D;
+  --ys-secondary-600: #07293d;
   --ys-secondary-500: #134a6a;
   --ys-secondary-400: #216e9b;
   --ys-secondary-300: #2f94ce;
   --ys-secondary-200: #61baf8;
   --ys-secondary-100: #beddfc;
-  --ys-secondary-700-rgb: 2,18,30;
-  --ys-secondary-600-rgb: 7,41,61;
-  --ys-secondary-500-rgb: 19,74,106;
-  --ys-secondary-400-rgb: 33,110,155;
-  --ys-secondary-300-rgb: 47,148,206;
-  --ys-secondary-200-rgb: 97,186,248;
-  --ys-secondary-100-rgb: 190,221,252;
+  --ys-secondary-700-rgb: 2, 18, 30;
+  --ys-secondary-600-rgb: 7, 41, 61;
+  --ys-secondary-500-rgb: 19, 74, 106;
+  --ys-secondary-400-rgb: 33, 110, 155;
+  --ys-secondary-300-rgb: 47, 148, 206;
+  --ys-secondary-200-rgb: 97, 186, 248;
+  --ys-secondary-100-rgb: 190, 221, 252;
 
   --ys-grey-700: #262222;
   --ys-grey-600: #474041;
@@ -40,13 +40,13 @@
   --ys-grey-300: #b2abac;
   --ys-grey-200: #d6d3d4;
   --ys-grey-100: #f1f0f0;
-  --ys-grey-700-rgb: 38,34,34;
-  --ys-grey-600-rgb: 71,64,65;
-  --ys-grey-500-rgb: 107,97,98;
-  --ys-grey-400-rgb: 144,133,134;
-  --ys-grey-300-rgb: 178,171,172;
-  --ys-grey-200-rgb: 214,211,212;
-  --ys-grey-100-rgb: 241,240,240;
+  --ys-grey-700-rgb: 38, 34, 34;
+  --ys-grey-600-rgb: 71, 64, 65;
+  --ys-grey-500-rgb: 107, 97, 98;
+  --ys-grey-400-rgb: 144, 133, 134;
+  --ys-grey-300-rgb: 178, 171, 172;
+  --ys-grey-200-rgb: 214, 211, 212;
+  --ys-grey-100-rgb: 241, 240, 240;
 
   font-size: 1rem;
   font-weight: 400;
@@ -62,7 +62,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden;
 }

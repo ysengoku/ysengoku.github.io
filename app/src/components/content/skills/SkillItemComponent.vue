@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { SkillItem } from 'src/models/skill';
+  import type { SkillItem } from 'src/models/skill';
 
-defineProps<{
+  defineProps<{
     item: SkillItem;
-}>();
+  }>();
 </script>
 
 <template>
@@ -21,8 +21,8 @@ defineProps<{
 </template>
 
 <style scoped>
-span {
-  color: var(--ys-grey-100);
-  background-color: var(--ys-primary-500);
-}
+  span {
+    color: var(--ys-grey-100);
+    background-color: var(--ys-primary-500);
+  }
 </style>

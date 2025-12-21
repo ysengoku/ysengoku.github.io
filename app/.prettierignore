@@ -1,0 +1,12 @@
+node_modules
+dist
+.vite
+.env
+.env.*
+public
+coverage
+
+# Optional editor/IDE folders
+.vscode
+.idea
+.DS_Store

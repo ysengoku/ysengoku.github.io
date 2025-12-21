@@ -1,46 +1,44 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { projectItems } from '@data/projectsData';
-import { usePopupStore } from '@store/popup';
+  import { computed } from 'vue';
+  import { projectItems } from '@data/projectsData';
+  import { usePopupStore } from '@store/popup';
 
-const popup = usePopupStore();
+  const popup = usePopupStore();
 
-const item = computed(() => {
-  const id = popup.contentId;
-  if (!id == null) {
-    return null;
+  const item = computed(() => {
+    const id = popup.contentId;
+    if (!id == null) {
+      return null;
+    }
+    return projectItems.find((p) => p.id === id) ?? null;
+  });
+
+  function closePopup() {
+    popup.close();
   }
-  return projectItems.find((p) => p.id === id) ?? null;
-});
-
-function closePopup() {
-  popup.close();
-}
 </script>
 
 <template>
-  <div 
+  <div
     v-if="popup.isOpen && item"
     role="dialog"
     aria-modal="true"
     :aria-labelledby="`popover-title-${popup.contentId}`"
   >
     <div class="project-detail-panel" @click.stop>
-      <button
-        aria-label="Close"
-        class="close-btn"
-        @click="closePopup"
-      >
+      <button aria-label="Close" class="close-btn" @click="closePopup">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="project-detail-content flex flex-col justify-center items-center mx-8 mt-8 gap-4">
-
-        <h2 class="text-2xl md:text-3xl font-bold uppercase mt-8" :id="`popover-title-${popup.contentId}`">
+        <h2
+          :id="`popover-title-${popup.contentId}`"
+          class="text-2xl md:text-3xl font-bold uppercase mt-8"
+        >
           {{ item.title }}
         </h2>
 
         <p class="item-intro text-muted md:px-8 text-start md:text-center">
-            {{ item.intro }}
+          {{ item.intro }}
         </p>
         <img class="project-image" :src="item.image" :alt="item.title" />
         <p class="project-detail mt-4 text-start">
@@ -56,12 +54,7 @@ function closePopup() {
             {{ item.techTools }}
           </li>
         </ul>
-        <a 
-          class="btn text-uppercase mt-4"
-          :href="item.github"
-          target="_blank"
-          rel="noopener"
-        >
+        <a class="btn text-uppercase mt-4" :href="item.github" target="_blank" rel="noopener">
           View on GitHub
         </a>
       </div>
@@ -70,77 +63,75 @@ function closePopup() {
 </template>
 
 <style scoped>
-.project-detail-panel {
-  width: 85vw;
-  max-height: 90vh;
-  overflow: auto;
-  position: relative;
-  background: rgba(var(--ys-grey-700-rgb), 0.9);
-  border-radius: 0.5rem;
-}
-.project-detail-content {
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-}
-.project-image {
-  width: 75%;
-  height: auto;
-  border-radius: 0.375rem;
-  margin-top: 0.75rem;
-}
-.project-detail,
-ul {
-  width: 75%;
-}
-
-.close-btn {
-  color: rgba(var(--ys-grey-100-rgb), 0.6);
-  font-size: 2.5rem;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  margin: 1rem;
-  cursor: pointer;
-}
-
-.project-detail-panel::-webkit-scrollbar {
-  width: 8px;
-  border-radius: 8px;
-}
-.project-detail-panel::-webkit-scrollbar-track {
-  background-color: rgba(var(--ys-grey-600-rgb), 0.2);
-  border-radius: 10px;
-}
-.project-detail-panel::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(var(--ys-grey-600-rgb), 0.6),
-    rgba(var(--ys-primary-500-rgb), 0.6),
-    rgba(var(--ys-grey-600-rgb), 0.6)
-  );
-  border-radius: 8px;
-}
-/* For Firefox */
-.project-detail-panel {
-  scrollbar-width: thin;
-  scrollbar-color:
-    rgba(var(--ys-primary-500-rgb), 0.6)
-    rgba(var(--ys-grey-600-rgb), 0.2);
-}
-
-@media (max-width: 768px) {
-  .project-detail-content {
-    padding: 0;
+  .project-detail-panel {
+    width: 85vw;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    background: rgba(var(--ys-grey-700-rgb), 0.9);
     border-radius: 0.5rem;
   }
-  .close-btn {
-    color: rgba(var(--ys-grey-100-rgb), 0.6);
-    font-size: 1.5rem;
+  .project-detail-content {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
   }
-  .project-image,
+  .project-image {
+    width: 75%;
+    height: auto;
+    border-radius: 0.375rem;
+    margin-top: 0.75rem;
+  }
   .project-detail,
   ul {
-    width: 100%;
+    width: 75%;
   }
-}
+
+  .close-btn {
+    color: rgba(var(--ys-grey-100-rgb), 0.6);
+    font-size: 2.5rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    margin: 1rem;
+    cursor: pointer;
+  }
+
+  .project-detail-panel::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 8px;
+  }
+  .project-detail-panel::-webkit-scrollbar-track {
+    background-color: rgba(var(--ys-grey-600-rgb), 0.2);
+    border-radius: 10px;
+  }
+  .project-detail-panel::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(var(--ys-grey-600-rgb), 0.6),
+      rgba(var(--ys-primary-500-rgb), 0.6),
+      rgba(var(--ys-grey-600-rgb), 0.6)
+    );
+    border-radius: 8px;
+  }
+  /* For Firefox */
+  .project-detail-panel {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--ys-primary-500-rgb), 0.6) rgba(var(--ys-grey-600-rgb), 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .project-detail-content {
+      padding: 0;
+      border-radius: 0.5rem;
+    }
+    .close-btn {
+      color: rgba(var(--ys-grey-100-rgb), 0.6);
+      font-size: 1.5rem;
+    }
+    .project-image,
+    .project-detail,
+    ul {
+      width: 100%;
+    }
+  }
 </style>
