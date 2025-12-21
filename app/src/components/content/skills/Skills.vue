@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import SkillItemComponent from './SkillItemComponent.vue';
+import { skillItems } from '@data/skillsData';
+</script>
+
 <template>
   <section id="skills" class="py-20">
     <div class="max-w-6xl mx-auto px-6">
@@ -18,8 +23,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import SkillItemComponent from './SkillItemComponent.vue';
-import { skillItems } from '@data/skillsData';
-</script>

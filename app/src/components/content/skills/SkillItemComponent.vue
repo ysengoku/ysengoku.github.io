@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import type { SkillItem } from 'src/models/skill';
+
+defineProps<{
+    item: SkillItem;
+}>();
+</script>
+
 <template>
   <div>
     <span class="inline-flex items-center justify-center w-24 h-24 rounded-full text-4xl mb-6">
@@ -11,14 +19,6 @@
     </p>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { SkillItem } from 'src/models/skill';
-
-defineProps<{
-    item: SkillItem;
-}>();
-</script>
 
 <style scoped>
 span {

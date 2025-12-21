@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import ProjectPreviewComponent from './ProjectPreviewComponent.vue';
+import { projectItems } from '@data/projectsData';
+
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// @ts-ignore
+import 'swiper/css';
+// @ts-ignore
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+
+const breakpoints = {
+  1440: { slidesPerView: 4 },
+  1024: { slidesPerView: 3 },
+  768:  { slidesPerView: 2 },
+  640:  { slidesPerView: 1 },
+};
+
+function getSlideClass(index: number) {
+  return `slide-${index}`;
+}
+</script>
+
 <template>
   <section class="py-16" id="projects">
     <div class="projects-container">
@@ -26,29 +49,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import ProjectPreviewComponent from './ProjectPreviewComponent.vue';
-import { projectItems } from '@data/projectsData';
-
-import { Swiper, SwiperSlide } from 'swiper/vue';
-// @ts-ignore
-import 'swiper/css';
-// @ts-ignore
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-
-const breakpoints = {
-  1440: { slidesPerView: 4 },
-  1024: { slidesPerView: 3 },
-  768:  { slidesPerView: 2 },
-  640:  { slidesPerView: 1 },
-};
-
-function getSlideClass(index: number) {
-  return `slide-${index}`;
-}
-</script>
 
 <style scoped>
 .projects-container {

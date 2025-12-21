@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import type { TimelineItem } from 'src/models/timeline';
+
+defineProps<{
+  data: TimelineItem;
+}>();
+</script>
+
 <template>
   <li class="mb-4 flex flex-col md:flex-row-reverse md:items-center">
     <div class="timeline-image">
@@ -25,11 +33,3 @@
     </div>
   </li>
 </template>
-
-<script setup lang="ts">
-import type { TimelineItem } from 'src/models/timeline';
-
-defineProps<{
-  data: TimelineItem;
-}>();
-</script>

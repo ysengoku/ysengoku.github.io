@@ -1,28 +1,3 @@
-<template>
-  <section id="about" class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold uppercase tracking-wide">Background</h2>
-        <h3 class="mt-2">
-          My Experience and Education Overview
-        </h3>
-      </div>
-
-      <ul class="relative">
-        <!-- vertical line -->
-        <div class="timeline-line"></div>
-
-        <TimelineItemComponent
-          v-for="(item, index) in timelineItems"
-          :key="index"
-          :data="item"
-        />
-      </ul>
-
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
 import { onMounted, nextTick } from 'vue';
 import { timelineItems } from '@data/timelineData';
@@ -50,6 +25,31 @@ onMounted(async () => {
   document.documentElement.style.setProperty('--timeline-height', `${lineHeight}px`);
 });
 </script>
+
+<template>
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold uppercase tracking-wide">Background</h2>
+        <h3 class="mt-2">
+          My Experience and Education Overview
+        </h3>
+      </div>
+
+      <ul class="relative">
+        <!-- vertical line -->
+        <div class="timeline-line"></div>
+
+        <TimelineItemComponent
+          v-for="(item, index) in timelineItems"
+          :key="index"
+          :data="item"
+        />
+      </ul>
+
+    </div>
+  </section>
+</template>
 
 <style>
 .timeline-line {

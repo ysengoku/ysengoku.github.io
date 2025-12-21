@@ -1,3 +1,9 @@
+
+<script setup>
+import { ref } from "vue"
+const open = ref(false)
+</script>
+
 <template>
   <nav class="fixed top-0 w-full z-50 text-white">
     <div class="flex items-center justify-between w-full px-8 py-4">
@@ -32,11 +38,6 @@
     </transition>
   </nav>
 </template>
-
-<script setup>
-import { ref } from "vue"
-const open = ref(false)
-</script>
 
 <style>
 nav {
