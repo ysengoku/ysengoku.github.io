@@ -1,10 +1,11 @@
 export interface ProjectItem {
   id: number;
   title: string;
-  subtitle: string;
-  intro: string;
+  subtitleKey: string;
+  introKey: string;
   image: string;
-  description: string;
+  link?: string;
+  descriptionKey: string;
   techLanguage: string;
   techTools: string;
   github: string;

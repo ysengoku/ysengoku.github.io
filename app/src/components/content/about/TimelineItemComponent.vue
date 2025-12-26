@@ -15,16 +15,16 @@
     <div :class="data.id % 2 === 1 ? 'timeline-panel-right' : 'timeline-panel-left'">
       <div class="p-6">
         <p class="text-sm">
-          {{ data.period }}
+          {{ $t(data.periodKey) }}
         </p>
         <h4 class="text-xl font-semibold mt-2">
-          {{ data.title }}
+          {{ $t(data.titleKey) }}
         </h4>
         <h5 class="font-medium mb-3">
-          {{ data.subtitle }}
+          {{ $t(data.subtitleKey) }}
         </h5>
         <p>
-          {{ data.description }}
+          {{ $t(data.descriptionKey) }}
         </p>
       </div>
     </div>

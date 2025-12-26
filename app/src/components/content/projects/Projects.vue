@@ -26,8 +26,8 @@
   <section id="projects" class="py-16">
     <div class="projects-container">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold uppercase tracking-wide">Latest works</h2>
-        <h3 class="mt-2">Explore my most recent projects and achievements.</h3>
+        <h2 class="text-3xl font-bold uppercase tracking-wide">{{ $t('projectsSection') }}</h2>
+        <h3 class="mt-2">{{ $t('projectsSubtitle') }}</h3>
       </div>
       <div class="swiper-container-wrapper">
         <Swiper

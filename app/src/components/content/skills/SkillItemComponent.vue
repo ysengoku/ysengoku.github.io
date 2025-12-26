@@ -12,10 +12,10 @@
       <i :class="item.icon"></i>
     </span>
     <h4 class="text-xl font-semibold mb-3">
-      {{ item.title }}
+      {{ $t(item.titleKey) }}
     </h4>
     <p class="text-start ms-4">
-      {{ item.description }}
+      {{ $t(item.descriptionKey) }}
     </p>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <footer class="mt-10 py-2">
     <div class="row align-items-center g-0">
       <div class="col-lg-8 text-lg-start">
-        <span class="text-lg me-1 cta">Get in Touch with me: </span>
+        <span class="text-lg me-1 cta">{{ $t('cta') }}: </span>
         <a
           class="btn-social mx-1"
           href="https://www.linkedin.com/in/yuko-sengoku/"

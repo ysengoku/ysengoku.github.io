@@ -30,8 +30,8 @@
   <section id="about" class="py-16">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold uppercase tracking-wide">Background</h2>
-        <h3 class="mt-2">My Experience and Education Overview</h3>
+        <h2 class="text-3xl font-bold uppercase tracking-wide">{{ $t('experiencesSection') }}</h2>
+        <h3 class="mt-2">{{ $t('experienceSubtitle') }}</h3>
       </div>
 
       <ul class="relative">

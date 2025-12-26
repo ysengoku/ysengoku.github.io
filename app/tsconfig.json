@@ -12,6 +12,8 @@
       "@models": ["src/models/index.ts", "src/models"],
       "@store/*": ["src/store/*.ts", "src/store/*"],
       "@store": ["src/store/index.ts", "src/store"],
+      "@utils/*": ["src/utils/*.ts", "src/utils/*"],
+      "@utils": ["src/utils/index.ts", "src/utils"]
     },
     "moduleResolution": "bundler"
   },

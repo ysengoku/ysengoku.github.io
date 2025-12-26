@@ -28,7 +28,7 @@
       {{ item.title }}
     </h4>
     <p class="text-sm mx-4 my-2">
-      {{ item.subtitle }}
+      {{ $t(item.subtitleKey) }}
     </p>
   </div>
 </template>

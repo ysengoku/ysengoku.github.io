@@ -10,6 +10,7 @@ export default defineConfig({
       '@data': path.resolve(__dirname, './src/data'),
       '@models': path.resolve(__dirname, './src/models'),
       '@store': path.resolve(__dirname, './src/store'),
+      '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
   plugins: [vue(), tailwindcss()],

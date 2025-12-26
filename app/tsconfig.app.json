@@ -12,7 +12,9 @@
       "@components": ["src/components/index.ts", "src/components"],
       "@data": ["src/data/index.ts", "src/data"],
       "@models": ["src/models/index.ts", "src/models"],
-      "@store": ["src/store/index.ts", "src/store"]
+      "@store": ["src/store/index.ts", "src/store"],
+      "@utils/*": ["src/utils/*.ts", "src/utils/*"],
+      "@utils": ["src/utils/index.ts", "src/utils"]
     },
 
     /* Linting */

@@ -38,25 +38,43 @@
         </h2>
 
         <p class="item-intro text-muted md:px-8 text-start md:text-center">
-          {{ item.intro }}
+          {{ $t(item.introKey) }}
         </p>
-        <img class="project-image" :src="item.image" :alt="item.title" />
+        <a
+          :href="$t(item.link ?? '')"
+          target="_blank"
+          rel="noopener"
+          class="flex w-full justify-center"
+        >
+          <img class="project-image" :src="item.image" :alt="item.title" />
+        </a>
         <p class="project-detail mt-4 text-start">
-          {{ item.description }}
+          {{ $t(item.descriptionKey) }}
         </p>
         <ul class="text-start mt-3">
           <li>
-            <strong>Languages: </strong>
-            {{ item.techLanguage }}
+            <strong>{{ $t('languages') }}: </strong>
+            {{ $t(item.techLanguage) }}
           </li>
           <li>
-            <strong>Technologies:</strong>
-            {{ item.techTools }}
+            <strong>{{ $t('technologies') }}: </strong>
+            {{ $t(item.techTools) }}
           </li>
         </ul>
-        <a class="btn text-uppercase mt-4" :href="item.github" target="_blank" rel="noopener">
-          View on GitHub
-        </a>
+        <div class="flex flex-col justify-center items-center gap-6 my-8">
+          <a class="btn-m-0 text-uppercase" :href="item.github" target="_blank" rel="noopener">
+            {{ $t('seeGitHub') }}
+          </a>
+          <a
+            v-if="item.link"
+            class="btn-m-0 text-uppercase"
+            :href="$t(item.link)"
+            target="_blank"
+            rel="noopener"
+          >
+            {{ $t('seeWebsite') }}
+          </a>
+        </div>
       </div>
     </div>
   </div>

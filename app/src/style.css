@@ -101,6 +101,15 @@ h2 {
   font-weight: 700;
 }
 
+.btn-m-0 {
+  color: var(--ys-grey-100);
+  background-color: var(--ys-primary-500);
+  padding: 1.25rem 2.5rem;
+  border-radius: 0.375rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
 button:hover,
 .btn:hover {
   background-color: var(--ys-primary-500-dark);
