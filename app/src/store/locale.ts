@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia';
 import { setLangToUrl } from '@utils/url';
 
-export type Locale = 'en' | 'fr';
+export type Locale = 'en' | 'fr' | 'ja';
+
 export const useLocaleStore = defineStore('locale', {
   state: () => ({
     locale: 'fr' as Locale,
@@ -14,7 +15,7 @@ export const useLocaleStore = defineStore('locale', {
       const langNames = {
         en: 'English',
         fr: 'Français',
-        // ja: '日本語',/
+        ja: '日本語',
       };
       return langNames[this.locale];
     },
@@ -22,11 +23,11 @@ export const useLocaleStore = defineStore('locale', {
       const langNames = {
         en: 'English',
         fr: 'Français',
-        // ja: '日本語',/
+        ja: '日本語',
       };
       return langNames[lang];
     },
-    changeLanguage(lang: 'en' | 'fr') {
+    changeLanguage(lang: 'en' | 'fr' | 'ja') {
       this.locale = lang;
       setLangToUrl(lang);
     },

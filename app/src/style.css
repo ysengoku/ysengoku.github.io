@@ -73,6 +73,13 @@ body {
   text-align: center;
 }
 
+:lang(ja) {
+  line-height: 150%;
+  p {
+    font-size: 0.9em;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--ys-black);

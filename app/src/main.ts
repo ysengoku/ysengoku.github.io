@@ -5,6 +5,7 @@ import { createI18n } from 'vue-i18n';
 import { messages } from './i18n';
 import { useLocaleStore } from '@store/locale';
 import { setLangToUrl } from '@utils/url';
+import type { Locale } from '@store/locale';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './style.css';
 
@@ -12,7 +13,7 @@ const app = createApp(App);
 const pinia = createPinia();
 const i18n = createI18n({
   legacy: false,
-  locale: 'en',
+  locale: 'fr',
   fallbackLocale: 'en',
   messages,
 });
@@ -25,6 +26,7 @@ watch(
   () => localeStore.locale,
   (lang) => {
     i18n.global.locale.value = lang;
+    document.documentElement.lang = lang;
   },
   { immediate: true }
 );
@@ -32,5 +34,5 @@ watch(
 app.mount('#app');
 
 const url = new URL(window.location.href);
-const lang = url.searchParams.get('lang') as 'en' | 'fr' | null;
+const lang = url.searchParams.get('lang') as Locale | null;
 lang ? localeStore.setLocale(lang) : setLangToUrl(localeStore.locale);

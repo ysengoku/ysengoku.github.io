@@ -20,7 +20,7 @@
         <h4 class="text-xl font-semibold mt-2">
           {{ $t(data.titleKey) }}
         </h4>
-        <h5 class="font-medium mb-3">
+        <h5 class="font-medium mt-2 mb-3">
           {{ $t(data.subtitleKey) }}
         </h5>
         <p>

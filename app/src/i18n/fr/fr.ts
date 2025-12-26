@@ -11,7 +11,7 @@ export const fr = {
   projectsSection: 'Derniers projets',
   projectsSubtitle: 'Explorez mes projets et réalisations les plus récents.',
   projects: projectsFr,
-  languages: 'Langues',
+  languages: 'Languages ',
   technologies: 'Technologies',
   seeGitHub: 'Voir sur GitHub',
   seeWebsite: 'Voir le site web',

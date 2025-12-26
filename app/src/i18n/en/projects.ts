@@ -4,7 +4,7 @@ export const projectsEn = {
     intro:
       'Single Page Site designed to present my technical skills, projects, and professional experience in a clean and interactive interface.',
     description:
-      'The portfolio features a responsive design, a multilingual interface (English and French), and allows viewing previews of each project. It uses modern front-end technologies. Developed with Vue.js and TypeScript, it leverages Pinia for state management and Vue I18n for language switching, and is deployed on GitHub Pages.',
+      'The portfolio features a responsive design, a multilingual interface (English, French, Japanese), and allows viewing previews of each project. It uses modern front-end technologies. Developed with Vue.js and TypeScript, it leverages Pinia for state management and Vue I18n for language switching, and is deployed on GitHub Pages.',
   },
   transcendence: {
     subtitle:

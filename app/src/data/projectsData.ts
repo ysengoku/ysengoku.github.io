@@ -73,6 +73,7 @@ export const projectItems: ProjectItem[] = [
     subtitleKey: 'projects.mobilix.subtitle',
     introKey: 'projects.mobilix.intro',
     image: '/img/portfolio/6.jpg',
+    link: '',
     descriptionKey: 'projects.mobilix.description',
     techLanguage: 'Swift, SwiftUI',
     techTools: 'UX/UI design',

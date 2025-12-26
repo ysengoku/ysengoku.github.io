@@ -4,7 +4,7 @@ export const projectsFr = {
     intro:
       'Single Page Site conçu pour présenter mes compétences techniques, mes projets et mes expériences professionnelles avec une interface claire et interactive.',
     description:
-      'Le portfolio propose un design responsive, une interface multilingue (anglais et français), et permet de consulter les aperçus de chaque projet. Il intègre des technologies modernes front-end. Il est développé avec Vue.js et TypeScript, utilise Pinia pour la gestion d’état et Vue I18n pour la gestion des langues. Déployé sur GitHub Pages.',
+      'Le portfolio propose un design responsive, une interface multilingue (anglais, français et japonais), et permet de consulter les aperçus de chaque projet. Il intègre des technologies modernes front-end. Il est développé avec Vue.js et TypeScript, utilise Pinia pour la gestion d’état et Vue I18n pour la gestion des langues. Déployé sur GitHub Pages.',
   },
   transcendence: {
     subtitle:

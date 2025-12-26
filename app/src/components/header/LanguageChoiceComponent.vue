@@ -5,14 +5,14 @@
   const localeStore = useLocaleStore();
   const open = ref(false);
 
-  const languages = ['en', 'fr'] as const;
+  const languages = ['en', 'fr', 'ja'] as const;
   const filteredLanguages = computed(() => languages.filter((lang) => lang !== localeStore.locale));
 
   function toggleDropdown() {
     open.value = !open.value;
   }
 
-  function selectLanguage(newLang: 'en' | 'fr') {
+  function selectLanguage(newLang: 'en' | 'fr' | 'ja') {
     localeStore.changeLanguage(newLang);
   }
 </script>

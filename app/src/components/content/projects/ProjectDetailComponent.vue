@@ -41,7 +41,7 @@
           {{ $t(item.introKey) }}
         </p>
         <a
-          :href="$t(item.link ?? '')"
+          :href="item.link ?? ''"
           target="_blank"
           rel="noopener"
           class="flex w-full justify-center"
@@ -54,11 +54,11 @@
         <ul class="text-start mt-3">
           <li>
             <strong>{{ $t('languages') }}: </strong>
-            {{ $t(item.techLanguage) }}
+            {{ item.techLanguage }}
           </li>
           <li>
             <strong>{{ $t('technologies') }}: </strong>
-            {{ $t(item.techTools) }}
+            {{ item.techTools }}
           </li>
         </ul>
         <div class="flex flex-col justify-center items-center gap-6 my-8">
@@ -68,7 +68,7 @@
           <a
             v-if="item.link"
             class="btn-m-0 text-uppercase"
-            :href="$t(item.link)"
+            :href="item.link"
             target="_blank"
             rel="noopener"
           >
@@ -112,6 +112,10 @@
     right: 0.5rem;
     margin: 1rem;
     cursor: pointer;
+  }
+
+  .btn-m-0 {
+    width: 16rem;
   }
 
   .project-detail-panel::-webkit-scrollbar {

@@ -1,6 +1,9 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
+  import { useLocaleStore } from '@store/locale';
   import { onMounted, onUnmounted, ref } from 'vue';
+
+  const localeStore = useLocaleStore();
 
   interface VantaNetEffect {
     destroy: () => void;
@@ -44,7 +47,13 @@
   <header id="header" ref="headerRef" class="relative w-full p-8">
     <div ref="vantaRef" class="absolute inset-0 z-0"></div>
     <div class="relative z-10 m-8 flex flex-col items-center justify-center h-full text-center">
-      <div class="text-2xl md:text-3xl mb-4">{{ $t('jobTitle') }}</div>
+      <div v-if="localeStore.locale === 'ja'" class="text-xl md:text-2xl mb-4">
+        {{ $t('jobTitle') }}
+      </div>
+      <div v-else class="text-2xl md:text-3xl mb-4">
+        {{ $t('jobTitle') }}
+      </div>
+
       <h1 class="text-4xl md:text-6xl font-bold mb-16">Yuko SENGOKU</h1>
       <a class="btn" href="https://github.com/ysengoku">{{ $t('githubButton') }}</a>
     </div>
