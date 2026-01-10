@@ -2,6 +2,9 @@
 
 Personal portfolio website built as a **Single Page Application** to present projects, skills, and professional background.
 
+[![Portfolio](https://img.shields.io/badge/Explore_now-✨My_Portfolio✨-ae3855?style=for-the-badge&labelColor=ae3855)](https://ysengoku.github.io/?lang=en)
+
+
 ## Overview
 
 This project is the second major iteration of my portfolio website.  
