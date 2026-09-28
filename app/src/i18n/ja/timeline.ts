@@ -1,4 +1,10 @@
 export const timelineJa = {
+  axeoSystem: {
+    period: '2025.11 - 2026.05',
+    title: 'ソフトウェアエンジニア',
+    subtitle: 'Axeo System (フランス ヴィルールバンヌ)',
+    description: 'BIM/GEDプラットフォームの開発に携わる。',
+  },
   42: {
     period: '2023.11 - 現在',
     title: 'ITアーキテクチャエキスパート(RNCP7)準備課程',
@@ -28,7 +34,7 @@ export const timelineJa = {
   travelCounselor: {
     period: '',
     title: '国際旅行カウンセラー＆ツアープランナー',
-    subtitle: 'HIS | Hankyu Travel International | NTS (名古屋 日本)',
+    subtitle: "HIS {'|'} Hankyu Travel International {'|'} NTS (名古屋 日本)",
     description:
       'FITおよび法人向けビジネストラベルを専門とし、国際的な旅行業界プロジェクトに携わる。',
   },

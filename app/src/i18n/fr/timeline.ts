@@ -1,6 +1,12 @@
 export const timelineFr = {
+  axeoSystem: {
+    period: 'novembre 2025 - mai 2026',
+    title: 'Développeuse Fullstack',
+    subtitle: 'Axeo System (Villeurbanne, France)',
+    description: 'Participation au développement d’une plateforme BIM/GED.',
+  },
   42: {
-    period: 'Novembre 2023 - Présent',
+    period: 'novembre 2023 - Présent',
     title: 'Préparation à la certification Expert en Architecture IT (RNCP7)',
     subtitle: '42 Lyon Auvergne-Rhône-Alpes',
     description:
@@ -30,7 +36,7 @@ export const timelineFr = {
   travelCounselor: {
     period: '',
     title: 'Conseillère en voyages internationaux',
-    subtitle: 'HIS | Hankyu Travel International | NTS (Nagoya, Japon)',
+    subtitle: "HIS {'|'} Hankyu Travel International {'|'} NTS (Nagoya, Japon)",
     description:
       'Spécialisé dans les voyages FIT et d’affaires, participation à plusieurs projets internationaux dans le secteur du voyage.',
   },

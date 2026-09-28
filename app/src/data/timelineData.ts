@@ -3,6 +3,14 @@ import type { TimelineItem } from 'src/models/timeline';
 export const timelineItems: TimelineItem[] = [
   {
     id: 1,
+    image: '/img/about/axeo.png',
+    periodKey: 'timeline.axeoSystem.period',
+    titleKey: 'timeline.axeoSystem.title',
+    subtitleKey: 'timeline.axeoSystem.subtitle',
+    descriptionKey: 'timeline.axeoSystem.description',
+  },
+  {
+    id: 2,
     image: '/img/about/1.jpg',
     periodKey: 'timeline.42.period',
     titleKey: 'timeline.42.title',
@@ -10,7 +18,7 @@ export const timelineItems: TimelineItem[] = [
     descriptionKey: 'timeline.42.description',
   },
   {
-    id: 2,
+    id: 3,
     image: '/img/about/2.jpg',
     periodKey: 'timeline.champagnePL.period',
     titleKey: 'timeline.champagnePL.title',
@@ -18,7 +26,7 @@ export const timelineItems: TimelineItem[] = [
     descriptionKey: 'timeline.champagnePL.description',
   },
   {
-    id: 3,
+    id: 4,
     image: '/img/about/3.jpg',
     periodKey: 'timeline.tourismMaster.period',
     titleKey: 'timeline.tourismMaster.title',
@@ -26,7 +34,7 @@ export const timelineItems: TimelineItem[] = [
     descriptionKey: 'timeline.tourismMaster.description',
   },
   {
-    id: 4,
+    id: 5,
     image: '/img/about/4.jpg',
     periodKey: 'timeline.ajFrance.period',
     titleKey: 'timeline.ajFrance.title',
@@ -34,7 +42,7 @@ export const timelineItems: TimelineItem[] = [
     descriptionKey: 'timeline.ajFrance.description',
   },
   {
-    id: 5,
+    id: 6,
     image: '/img/about/5.jpg',
     periodKey: 'timeline.travelCounselor.period',
     titleKey: 'timeline.travelCounselor.title',
@@ -42,7 +50,7 @@ export const timelineItems: TimelineItem[] = [
     descriptionKey: 'timeline.travelCounselor.description',
   },
   {
-    id: 6,
+    id: 7,
     image: '/img/about/6.jpg',
     periodKey: 'timeline.bachelorLinguistics.period',
     titleKey: 'timeline.bachelorLinguistics.title',
