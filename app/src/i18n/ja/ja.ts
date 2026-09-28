@@ -15,6 +15,7 @@ export const ja = {
   technologies: 'テクノロジー ',
   seeGitHub: 'GitHubで見る',
   seeWebsite: 'ウェブサイトを見る',
+  seeDetail: '詳細を見る',
   experiencesSection: 'Background',
   experienceSubtitle: '職務経験および学習経歴',
   timeline: timelineJa,

@@ -15,6 +15,7 @@ export const en = {
   technologies: 'Technologies',
   seeGitHub: 'See on GitHub',
   seeWebsite: 'See Website',
+  seeDetail: 'See detail',
   experiencesSection: 'Background',
   experienceSubtitle: 'My Experience and Education Overview',
   timeline: timelineEn,

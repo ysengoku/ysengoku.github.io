@@ -21,7 +21,7 @@
     tabindex="0"
   >
     <div class="project-preview-hover h-100" @click="showDetail">
-      <div class="text-2xl">See detail</div>
+      <div class="text-2xl">{{ $t('seeDetail') }}</div>
     </div>
     <img :src="item.image" />
     <h4 class="text-xl font-semibold my-4">

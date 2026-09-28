@@ -7,17 +7,15 @@
 </script>
 
 <template>
-  <li class="mb-4 flex flex-col md:flex-row-reverse md:items-center">
-    <div class="timeline-image">
-      <img :src="data.image" class="rounded-full object-cover" />
-    </div>
-
+  <li class="relative mb-4 flex flex-col md:flex-row-reverse">
     <div :class="data.id % 2 === 1 ? 'timeline-panel-right' : 'timeline-panel-left'">
       <div class="p-6">
         <p class="text-sm">
           {{ $t(data.periodKey) }}
         </p>
         <h4 class="text-xl font-semibold mt-2">
+          <!-- Placed in the title so it aligns with the title's first line in any language -->
+          <span class="timeline-dot"></span>
           {{ $t(data.titleKey) }}
         </h4>
         <h5 class="font-medium mt-2 mb-3">

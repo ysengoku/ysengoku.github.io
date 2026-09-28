@@ -8,19 +8,22 @@
 
     const container = document.querySelector('#about ul') as HTMLElement;
     const firstLi = container?.querySelector('li') as HTMLElement;
-    const firstImg = firstLi?.querySelector('.timeline-image') as HTMLElement;
+    const firstDot = firstLi?.querySelector('.timeline-dot') as HTMLElement;
     const lastLi = container?.lastElementChild as HTMLElement;
-    const lastImg = lastLi?.querySelector('.timeline-image') as HTMLElement;
+    const lastDot = lastLi?.querySelector('.timeline-dot') as HTMLElement;
 
     const containerRect = container?.getBoundingClientRect();
-    const firstImgRect = firstImg?.getBoundingClientRect();
-    const lastImgRect = lastImg?.getBoundingClientRect();
-    if (!containerRect || !firstImgRect || !lastImgRect) {
+    const firstDotRect = firstDot?.getBoundingClientRect();
+    const lastDotRect = lastDot?.getBoundingClientRect();
+    if (!containerRect || !firstDotRect || !lastDotRect) {
       return;
     }
 
-    const relativeTop = firstImgRect.top - containerRect.top;
-    const lineHeight = lastImgRect.bottom - firstImgRect.top;
+    // Line runs from the center of the first dot to the center of the last one
+    const firstCenter = firstDotRect.top + firstDotRect.height / 2;
+    const lastCenter = lastDotRect.top + lastDotRect.height / 2;
+    const relativeTop = firstCenter - containerRect.top;
+    const lineHeight = lastCenter - firstCenter;
     document.documentElement.style.setProperty('--timeline-start', `${relativeTop}px`);
     document.documentElement.style.setProperty('--timeline-height', `${lineHeight}px`);
   });
@@ -55,32 +58,40 @@
     transform: translateX(-50%);
   }
 
-  .timeline-image {
+  .timeline-dot {
+    --timeline-dot-ring: var(--ys-grey-700);
     position: absolute;
     z-index: 100;
+    /* No `top`: stays at the title's top; center on its first line (text-xl line-height is 1.4em) */
+    margin-top: calc(0.7em - 9px);
     left: 50%;
-    width: 128px;
-    height: 128px;
-    margin-left: -64px;
-    text-align: center;
-    border: 4px solid #e9ecef;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
     border-radius: 100%;
+    background-color: var(--ys-primary-500);
+    box-shadow: 0 0 0 4px var(--timeline-dot-ring);
   }
 
-  .timeline-image img {
-    width: 120px;
-    height: 120px;
-    vertical-align: middle;
+  @media (prefers-color-scheme: light) {
+    .timeline-dot {
+      --timeline-dot-ring: var(--ys-grey-100);
+    }
+  }
+
+  .timeline-panel-right,
+  .timeline-panel-left {
+    flex: 1;
   }
 
   .timeline-panel-right {
     text-align: start;
-    margin-left: calc(50% + 64px);
+    margin-left: calc(50% + 1.5rem);
   }
 
   .timeline-panel-left {
     text-align: end;
-    margin-right: calc(50% + 64px);
+    margin-right: calc(50% + 1.5rem);
   }
 
   @media (width < 48rem) {
@@ -88,7 +99,7 @@
       display: none;
     }
 
-    .timeline-image {
+    .timeline-dot {
       display: none;
     }
 

@@ -15,6 +15,7 @@ export const fr = {
   technologies: 'Technologies',
   seeGitHub: 'Voir sur GitHub',
   seeWebsite: 'Voir le site web',
+  seeDetail: 'Voir le detail',
   experiencesSection: 'Parcours',
   experienceSubtitle: 'Mon parcours professionnel et académique',
   timeline: timelineFr,
