@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { ProjectItem } from 'src/models/project';
+  import type { ProjectItem } from '@models/project';
   import { usePopupStore } from '@store/popup';
 
   const popup = usePopupStore();

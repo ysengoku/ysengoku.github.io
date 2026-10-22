@@ -1,22 +1,5 @@
 {
   "files": [],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "preserve",
-    "paths": {
-      "@components/*": ["src/components/*.ts", "src/components/*"],
-      "@components": ["src/components/index.ts", "src/components"],
-      "@data/*": ["src/data/*.ts", "src/data/*"],
-      "@data": ["src/data/index.ts", "src/data"],
-      "@models/*": ["src/models/*.ts", "src/models/*"],
-      "@models": ["src/models/index.ts", "src/models"],
-      "@store/*": ["src/store/*.ts", "src/store/*"],
-      "@store": ["src/store/index.ts", "src/store"],
-      "@utils/*": ["src/utils/*.ts", "src/utils/*"],
-      "@utils": ["src/utils/index.ts", "src/utils"]
-    },
-    "moduleResolution": "bundler"
-  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

@@ -1,4 +1,4 @@
-import type { SkillItem } from 'src/models/skill';
+import type { SkillItem } from '@models/skill';
 
 export const skillItems: SkillItem[] = [
   {

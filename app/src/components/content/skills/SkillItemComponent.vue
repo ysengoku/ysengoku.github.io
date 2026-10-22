@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { SkillItem } from 'src/models/skill';
+  import type { SkillItem } from '@models/skill';
 
   defineProps<{
     item: SkillItem;

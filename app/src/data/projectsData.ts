@@ -1,4 +1,4 @@
-import type { ProjectItem } from 'src/models/project';
+import type { ProjectItem } from '@models/project';
 
 export const projectItems: ProjectItem[] = [
   {
