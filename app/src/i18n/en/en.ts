@@ -19,5 +19,26 @@ export const en = {
   experiencesSection: 'Background',
   experienceSubtitle: 'My Experience and Education Overview',
   timeline: timelineEn,
-  cta: 'Get in Touch with me',
+  globe: {
+    about: {
+      label: 'About',
+      summary: '[Summary of About section]',
+      text: '[Text of About section]',
+    },
+    experience: {
+      label: 'Experiences',
+      summary: '[Summary of Experiences section]',
+      text: '[Text of Experiences section]',
+    },
+    skills: {
+      label: 'Skills',
+      summary: '[Summary of Skills section]',
+      text: '[Text of Skills section]',
+    },
+    projects: {
+      label: 'Projects',
+      summary: '[Summary of Projects section]',
+      text: '[Text of Projects section]',
+    },
+  },
 };

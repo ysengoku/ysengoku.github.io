@@ -1,13 +1,15 @@
 <script setup lang="ts">
   import { watch } from 'vue';
   import { usePopupStore } from '@store/popup';
-  import Header from '@components/header/Header.vue';
-  import Navbar from '@components/header/Navbar.vue';
-  import Skills from '@components/content/skills/Skills.vue';
-  import Projects from '@components/content/projects/Projects.vue';
-  import ProjectDetailComponent from '@components/content/projects/ProjectDetailComponent.vue';
   import About from '@components/content/about/About.vue';
   import Footer from '@components/Footer.vue';
+  import GlobeMenu from '@components/globe/GlobeMenu.vue';
+  import GlobePin from '@components/globe/GlobePin.vue';
+  import Hero from '@components/Hero.vue';
+  import Navbar from '@components/header/Navbar.vue';
+  import ProjectDetailComponent from '@components/content/projects/ProjectDetailComponent.vue';
+  import Projects from '@components/content/projects/Projects.vue';
+  import Skills from '@components/content/skills/Skills.vue';
 
   const popup = usePopupStore();
 
@@ -24,12 +26,21 @@
     <ProjectDetailComponent v-if="popup.type === 'project'" />
   </div>
 
-  <Navbar />
-  <Header />
+  <header class="sticky top-0 z-50">
+    <Navbar />
+  </header>
 
-  <Skills />
-  <Projects />
-  <About />
+  <main class="block">
+    <section id="stage">
+      <Hero />
+      <GlobeMenu />
+      <GlobePin />
+    </section>
+
+    <Skills />
+    <Projects />
+    <About />
+  </main>
 
   <Footer />
 </template>

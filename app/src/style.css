@@ -1,8 +1,12 @@
 @import 'tailwindcss';
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: 'BugisniaPersonal';
+  src: url('/font/BugisniaPersonal.otf') format('opentype');
+  font-display: swap;
+}
 
+:root {
   --ys-primary-700: #42101c;
   --ys-primary-600: #762338;
   --ys-primary-500: #ae3855;
@@ -48,9 +52,29 @@
   --ys-grey-200-rgb: 214, 211, 212;
   --ys-grey-100-rgb: 241, 240, 240;
 
+  /* ===== Color tokens (temporally style) ===== */
+  --bg: var(--ys-secondary-700);
+  --card: var(--ys-secondary-600);
+  --line: #3a3d55;
+  --ocean: var(--ys-secondary-500);
+  --ocean-deep: var(--ys-secondary-600);
+  --land-n: #7fa08c;
+  --land-m: #c2ae86;
+  --land-s: #b58c8c;
+  --land-edge: rgba(255, 255, 255, 0.22);
+  --grid: rgba(237, 233, 242, 0.05);
+  --glow: rgba(160, 140, 220, 0.5);
+  --shade-hi: rgba(255, 255, 255, 0.12);
+  --shade-lo: rgba(0, 0, 0, 0.35);
+  --grain-a: rgba(0, 0, 0, 0.18);
+  --grain-b: rgba(255, 255, 255, 0.08);
+  --route: var(--ys-primary-400);
+
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+
+  --nav-h: 4rem;
 
   color-scheme: light dark;
   color: var(--ys-grey-100);
@@ -65,7 +89,43 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
+  display: block;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.0625rem;
+}
+
+@media (min-width: 768px) {
+  body { font-size: 1.125rem; }
+}
+
+main {
+  position: relative;
+  width: 100%;
+}
+
+nav {
+  height: var(--nav-h);
+  background-image: linear-gradient(
+    to bottom,
+    var(--ys-grey-700),
+    rgba(var(--ys-grey-700-rgb), 0.7),
+    rgba(var(--ys-grey-700-rgb), 0.1)
+  );
+}
+
+footer {
+  background-image: linear-gradient(
+    to top,
+    var(--ys-grey-700),
+    rgba(var(--ys-grey-700-rgb), 0.8),
+    rgba(var(--ys-grey-700-rgb), 0.6),
+    rgba(var(--ys-grey-700-rgb), 0)
+  );
 }
 
 #app {
@@ -73,10 +133,23 @@ body {
   text-align: center;
 }
 
+#stage {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--nav-h));
+  overflow: hidden;
+}
+
 :lang(ja) {
   line-height: 150%;
   p {
     font-size: 0.9em;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-h: 5rem;
   }
 }
 
@@ -91,7 +164,10 @@ body {
 }
 
 h1 {
-  color: var(--ys-grey-100);
+  color: rgba(var(--ys-primary-100-rgb), 0.8);
+  font-family: 'BugisniaPersonal', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h2 {

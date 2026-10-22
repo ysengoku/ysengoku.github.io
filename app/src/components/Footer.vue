@@ -1,39 +1,42 @@
+<script setup lang="ts">
+  import { contact } from '@data/contactData';
+
+  const year = new Date().getFullYear();
+</script>
+
 <template>
-  <footer class="mt-10 py-2">
-    <div class="row align-items-center g-0">
-      <div class="col-lg-8 text-lg-start">
-        <span class="text-lg me-1 cta">{{ $t('cta') }}: </span>
-        <a
-          class="btn-social mx-1"
-          href="https://www.linkedin.com/in/yuko-sengoku/"
-          aria-label="LinkedIn"
-        >
-          <i class="fab fa-linkedin-in"></i>
+  <footer class="sticky bottom-0 z-50 pt-8 pb-2">
+    <div class="flex items-center justify-center gap-4">
+      <div class="flex items-center gap-2">
+        <a class="btn-social" :href="contact.linkedin" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in fa-xl"></i>
         </a>
-        <a class="btn-social mx-1" href="https://github.com/ysengoku" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
+        <a class="btn-social" :href="contact.github" aria-label="GitHub">
+          <i class="fa-brands fa-github fa-xl"></i>
         </a>
       </div>
-      <div class="col-lg-4 me-3 my-3 my-lg-0 text-xs">Copyright &copy; Yuko SENGOKU 2025</div>
+      <p class="copyright">
+        Copyright &copy; {{ contact.name }} {{ year }}
+      </p>
     </div>
   </footer>
 </template>
 
 <style scoped>
-  .cta {
-    color: var(--ys-primary-500);
-    font-weight: bold;
-  }
-
   .btn-social {
     background-color: var(--ys-primary-500);
     border-color: var(--ys-primary-500);
-    height: 2.4rem;
-    width: 2.4rem;
+    height: 2.6rem;
+    width: 2.6rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     border-radius: 100%;
+  }
+
+  .copyright {
+    color: rgba(var(--ys-grey-100-rgb), 0.6);
+    font-size: 0.9rem;
   }
 </style>

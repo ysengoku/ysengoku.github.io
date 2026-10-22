@@ -19,5 +19,26 @@ export const ja = {
   experiencesSection: 'Background',
   experienceSubtitle: '職務経験および学習経歴',
   timeline: timelineJa,
-  cta: 'お問い合わせはこちら',
+  globe: {
+    about: {
+      label: 'About',
+      summary: '[Summary of About section]',
+      text: '[Text of About section]',
+    },
+    experience: {
+      label: 'Experiences',
+      summary: '[Summary of Experiences section]',
+      text: '[Text of Experiences section]',
+    },
+    skills: {
+      label: 'Skills',
+      summary: '[Summary of Skills section]',
+      text: '[Text of Skills section]',
+    },
+    projects: {
+      label: 'Projects',
+      summary: '[Summary of Projects section]',
+      text: '[Text of Projects section]',
+    },
+  },
 };

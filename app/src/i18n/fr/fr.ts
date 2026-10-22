@@ -3,7 +3,7 @@ import { timelineFr } from './timeline';
 import { projectsFr } from './projects';
 
 export const fr = {
-  jobTitle: 'Developpeur Full-stack',
+  jobTitle: 'Développeur Full-stack',
   githubButton: 'Mon GitHub',
   skillsSection: 'Compétences',
   skillsSubtitle: 'Découvrez mes compétences techniques en développement full-stack',
@@ -19,5 +19,26 @@ export const fr = {
   experiencesSection: 'Parcours',
   experienceSubtitle: 'Mon parcours professionnel et académique',
   timeline: timelineFr,
-  cta: 'Contactez-moi',
+  globe: {
+    about: {
+      label: 'About',
+      summary: '[Summary of About section]',
+      text: '[Text of About section]',
+    },
+    experience: {
+      label: 'Experiences',
+      summary: '[Summary of Experiences section]',
+      text: '[Text of Experiences section]',
+    },
+    skills: {
+      label: 'Skills',
+      summary: '[Summary of Skills section]',
+      text: '[Text of Skills section]',
+    },
+    projects: {
+      label: 'Projects',
+      summary: '[Summary of Projects section]',
+      text: '[Text of Projects section]',
+    },
+  },
 };

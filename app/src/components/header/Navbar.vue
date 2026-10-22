@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <nav class="fixed top-0 w-full z-50 text-white">
+  <nav class="w-full text-white">
     <div class="flex items-center justify-between w-full px-8 py-4">
       <a href="#" class="flex items-center mt-2" @click.prevent="scrollTop">
         <img src="/img/navbar-logo.svg" alt="logo" class="lg:h-10 h-8" />
@@ -63,9 +63,6 @@
 </template>
 
 <style>
-  nav {
-    background-color: rgba(var(--ys-grey-700-rgb), 0.8);
-  }
   .nav-link {
     color: var(--ys-grey-100);
   }

@@ -5,9 +5,12 @@ import { createI18n } from 'vue-i18n';
 import { messages } from './i18n';
 import { useLocaleStore } from '@store/locale';
 import { setLangToUrl } from '@utils/url';
-import type { Locale } from '@store/locale';
 import '@fortawesome/fontawesome-free/css/all.css';
+import '@fontsource/zen-kaku-gothic-new/400.css';
+import '@fontsource/zen-kaku-gothic-new/500.css';
+import '@fontsource/zen-kaku-gothic-new/700.css';
 import './style.css';
+import type { Locale } from '@store/locale';
 
 const app = createApp(App);
 const pinia = createPinia();
