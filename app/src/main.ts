@@ -35,4 +35,5 @@ app.mount('#app');
 
 const url = new URL(window.location.href);
 const lang = url.searchParams.get('lang') as Locale | null;
-lang ? localeStore.setLocale(lang) : setLangToUrl(localeStore.locale);
+if (lang) localeStore.setLocale(lang);
+else setLangToUrl(localeStore.locale);
