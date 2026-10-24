@@ -1,20 +1,15 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
   import { useLocaleStore } from '@store/locale';
-  import { onMounted, onUnmounted } from 'vue';
   import { contact } from '@data/contactData';
 
   const localeStore = useLocaleStore();
-
-  onMounted(() => {});
-
-  onUnmounted(() => {});
 </script>
 
 <template>
   <div
     id="hero"
-    class="flex flex-col items-start justify-start w-full h-full p-8 relative z-20"
+    class="flex flex-col items-start justify-start w-full h-full p-8 relative z-20 pointer-events-none"
   >
     <div v-if="localeStore.locale === 'ja'" class="text-lg md:text-2xl ps-4">
       {{ $t('jobTitle') }}

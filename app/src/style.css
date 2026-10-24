@@ -52,33 +52,22 @@
   --ys-grey-200-rgb: 214, 211, 212;
   --ys-grey-100-rgb: 241, 240, 240;
 
-  /* ===== Color tokens (temporally style) ===== */
-  --bg: var(--ys-secondary-700);
-  --card: var(--ys-secondary-600);
-  --line: #3a3d55;
-  --ocean: var(--ys-secondary-500);
-  --ocean-deep: var(--ys-secondary-600);
+  --bg: var(--ys-secondary-600);
+  --ocean: var(--ys-secondary-400);
+  --ocean-deep: var(--ys-secondary-500);
   --land-n: #7fa08c;
   --land-m: #c2ae86;
   --land-s: #b58c8c;
-  --land-edge: rgba(255, 255, 255, 0.22);
-  --grid: rgba(237, 233, 242, 0.05);
+  --land-edge: rgba(var(--ys-grey-100-rgb), 0.22);
   --glow: rgba(160, 140, 220, 0.5);
-  --shade-hi: rgba(255, 255, 255, 0.12);
-  --shade-lo: rgba(0, 0, 0, 0.35);
-  --grain-a: rgba(0, 0, 0, 0.18);
-  --grain-b: rgba(255, 255, 255, 0.08);
-  --route: var(--ys-primary-400);
-
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
+  --shade-hi: rgba(var(--ys-grey-100-rgb), 0.12);
+  --shade-lo: rgba(var(--ys-grey-700-rgb), 0.35);
+  --card: rgba(var(--ys-grey-700-rgb), 0.8);
+  --line: rgba(var(--ys-secondary-500-rgb), 0.2);
+  --route: var(--ys-primary-500);
+  --star: #e9ce98;
 
   --nav-h: 4rem;
-
-  color-scheme: light dark;
-  color: var(--ys-grey-100);
-  background-color: var(--ys-grey-700);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -88,9 +77,12 @@
 
 html,
 body {
+  color: var(--ys-grey-100);
+  line-height: 1.5;
   width: 100%;
   overflow-x: clip;
   display: block;
+  background: var(--bg);
 }
 
 body {
@@ -100,44 +92,37 @@ body {
 }
 
 @media (min-width: 768px) {
-  body { font-size: 1.125rem; }
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100dvh;
+  text-align: center;
 }
 
 main {
+  flex: 1;
+  min-height: 0;
   position: relative;
   width: 100%;
+  background-color: var(--ys-grey-700);
 }
 
 nav {
   height: var(--nav-h);
-  background-image: linear-gradient(
-    to bottom,
-    var(--ys-grey-700),
-    rgba(var(--ys-grey-700-rgb), 0.7),
-    rgba(var(--ys-grey-700-rgb), 0.1)
-  );
-}
-
-footer {
-  background-image: linear-gradient(
-    to top,
-    var(--ys-grey-700),
-    rgba(var(--ys-grey-700-rgb), 0.8),
-    rgba(var(--ys-grey-700-rgb), 0.6),
-    rgba(var(--ys-grey-700-rgb), 0)
-  );
-}
-
-#app {
-  width: 100vw;
-  text-align: center;
 }
 
 #stage {
   position: relative;
   width: 100%;
-  height: calc(100vh - var(--nav-h));
+  height: 100%;
   overflow: hidden;
+  background-color: var(--ys-secondary-600);
 }
 
 :lang(ja) {
@@ -166,7 +151,6 @@ footer {
 h1 {
   color: rgba(var(--ys-primary-100-rgb), 0.8);
   font-family: 'BugisniaPersonal', sans-serif;
-  font-weight: 400;
   font-style: normal;
 }
 

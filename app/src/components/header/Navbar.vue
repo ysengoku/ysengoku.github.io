@@ -24,13 +24,19 @@
 
       <ul class="hidden lg:flex lg:flex-row lg:space-x-10 lg:items-center text-sm">
         <li>
-          <a href="#skills" class="block py-2 text-lg nav-link">{{ $t('skillsSection') }}</a>
+          <RouterLink to="/skills" class="block py-2 text-lg nav-link">
+            {{ $t('skillsSection') }}
+          </RouterLink>
         </li>
         <li>
-          <a href="#projects" class="block py-2 text-lg nav-link">{{ $t('projectsSection') }}</a>
+          <RouterLink to="/projects" class="block py-2 text-lg nav-link">
+            {{ $t('projectsSection') }}
+          </RouterLink>
         </li>
         <li>
-          <a href="#about" class="block py-2 text-lg nav-link">{{ $t('experiencesSection') }}</a>
+          <RouterLink to="/background" class="block py-2 text-lg nav-link">
+            {{ $t('experiencesSection') }}
+          </RouterLink>
         </li>
         <li>
           <LanguageChoiceComponent />
@@ -44,15 +50,19 @@
         class="navbar-dropdown lg:hidden flex flex-col items-center space-y-2 px-8 py-4"
       >
         <li>
-          <a href="#skills" class="block py-2 text-lg nav-link">{{ $t('skillsSection') }}</a>
+          <RouterLink to="/skills" class="block py-2 text-lg nav-link">
+            {{ $t('skillsSection') }}
+          </RouterLink>
         </li>
         <li>
-          <a href="#projects" class="block py-2 text-lg nav-link">{{ $t('projectsSection') }}</a>
+          <RouterLink to="/projects" class="block py-2 text-lg nav-link">
+            {{ $t('projectsSection') }}
+          </RouterLink>
         </li>
         <li>
-          <a href="#about" class="block pt-2 pb-4 text-lg nav-link">{{
-            $t('experiencesSection')
-          }}</a>
+          <RouterLink to="/background" class="block pt-2 pb-4 text-lg nav-link">
+            {{ $t('experiencesSection') }}
+          </RouterLink>
         </li>
         <li>
           <LanguageChoiceComponent />

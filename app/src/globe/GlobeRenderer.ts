@@ -1,10 +1,10 @@
 import type { GeoPath } from 'd3-geo';
 import type { GeometryObject, Topology } from 'topojson-specification';
-import type { GlobeStop } from '@models/globe';
-import { geoOrthographic, geoPath } from 'd3-geo';
+import type { GlobeSpot, SpotPlacement } from '@models/globe';
+import { geoOrthographic, geoPath, geoDistance } from 'd3-geo';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/countries-110m.json';
-import { globeStops } from '@data/globeData';
+import { globeSpots } from '@data/globeData';
 import { targetFor } from './rotation';
 
 const RAD_TO_DEG = 180 / Math.PI;
@@ -40,8 +40,8 @@ export class GlobeRenderer {
   // Route segments between consecutive points, closed back to the first so the trip goes all the way round.
   private route = {
     type: 'MultiLineString' as const,
-    coordinates: globeStops.map((s, i) => {
-      const next = globeStops[(i + 1) % globeStops.length];
+    coordinates: globeSpots.map((s, i) => {
+      const next = globeSpots[(i + 1) % globeSpots.length];
       return [
         [s.lon, s.lat],
         [next!.lon, next!.lat],
@@ -62,13 +62,40 @@ export class GlobeRenderer {
     this.layout();
   }
 
-  draw(currentStopId: GlobeStop['id']) {
+  draw(currentSpotId: GlobeSpot['id']) {
     const stop =
-      globeStops.find((s) => s.id === currentStopId) ?? globeStops.find((s) => s.id === 'about');
+      globeSpots.find((s) => s.id === currentSpotId) ?? globeSpots.find((s) => s.id === 'about');
     if (!stop) return;
     const rotation = targetFor(stop, this.size.W, this.size.alpha);
     this.projection.rotate(rotation);
     this.renderGlobe();
+  }
+
+  getSpotPlacements(): Array<SpotPlacement> {
+    const placements: Array<SpotPlacement> = [];
+
+    // Current rotation: lambda = horizontal (longitude), phi = vertical tilt (latitude)
+    const [lambda, phi] = this.projection.rotate();
+    // [lon, lat] of the point currently facing the viewer
+    const center: [number, number] = [-lambda, -phi];
+
+    globeSpots.forEach((s) => {
+      const projectedPoint = this.projection([s.lon, s.lat]);
+      if (!projectedPoint) {
+        placements.push({ x: 0, y: 0, visible: false });
+        return;
+      }
+      const [x, y] = projectedPoint;
+
+      // On the visible half of the globe (less than 90° from the center), minus a small margin
+      const onFrontSide = geoDistance([s.lon, s.lat], center) < Math.PI / 2 - 0.06;
+
+      // Inside the screen: above the bottom edge, and at most 60px past the left/right edges
+      const onScreen = y < this.size.H - 6 && x > -60 && x < this.size.W + 60;
+
+      placements.push({ x: x, y: y, visible: onFrontSide && onScreen });
+    });
+    return placements;
   }
 
   private layout() {
@@ -87,14 +114,13 @@ export class GlobeRenderer {
     const capTop = this.size.H * (narrow ? 0.46 : 0.42); // y of the globe's apex
     this.size.cx = this.size.W / 2;
     this.size.cy = capTop + this.size.R;
-    // Focus point, a bit below the apex: the active stop is placed there
+    // Focus point, a bit below the apex: the active spot is placed there
     const focusY = capTop + Math.min(120, this.size.R * 0.13);
     this.size.alpha = Math.asin((this.size.cy - focusY) / this.size.R) * RAD_TO_DEG;
 
     this.canvas.width = Math.round(this.size.W * this.size.dpr);
     this.canvas.height = Math.round(this.size.H * this.size.dpr);
     this.projection.translate([this.size.cx, this.size.cy]).scale(this.size.R);
-    console.log(this.size);
   }
 
   private readColors() {

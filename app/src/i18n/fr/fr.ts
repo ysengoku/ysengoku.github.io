@@ -15,6 +15,7 @@ export const fr = {
   technologies: 'Technologies',
   seeGitHub: 'Voir sur GitHub',
   seeWebsite: 'Voir le site web',
+  explore: 'Explorer',
   seeDetail: 'Voir le detail',
   experiencesSection: 'Parcours',
   experienceSubtitle: 'Mon parcours professionnel et académique',
@@ -25,8 +26,8 @@ export const fr = {
       summary: '[Summary of About section]',
       text: '[Text of About section]',
     },
-    experience: {
-      label: 'Experiences',
+    background: {
+      label: 'Parcours',
       summary: '[Summary of Experiences section]',
       text: '[Text of Experiences section]',
     },

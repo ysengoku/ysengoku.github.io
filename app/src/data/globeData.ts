@@ -1,6 +1,6 @@
-import type { GlobeStop } from '@models/globe';
+import type { GlobeSpot } from '@models/globe';
 
-export const globeStops: GlobeStop[] = [
+export const globeSpots: GlobeSpot[] = [
   {
     id: 'about',
     labelKey: 'globe.about.label',
@@ -10,14 +10,12 @@ export const globeStops: GlobeStop[] = [
     textKey: 'globe.about.text',
   },
   {
-    id: 'experience',
-    labelKey: 'globe.experience.label',
+    id: 'background',
+    labelKey: 'globe.background.label',
     lon: -157,
     lat: 20.8,
-    view: [16, 7],
-    viewNarrow: [8, 14],
-    summaryKey: 'globe.experience.summary',
-    textKey: 'globe.experience.text',
+    summaryKey: 'globe.background.summary',
+    textKey: 'globe.background.text',
   },
   {
     id: 'skills',

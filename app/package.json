@@ -23,6 +23,7 @@
     "topojson-client": "^3.1.0",
     "vue": "^3.5.44",
     "vue-i18n": "^11.2.7",
+    "vue-router": "^5.4.0",
     "world-atlas": "2.0.2"
   },
   "devDependencies": {
@@ -48,6 +49,7 @@
     "vue-tsc": "^3.0.7"
   },
   "allowScripts": {
-    "esbuild@0.28.2": true
+    "esbuild@0.28.2": true,
+    "vue-router@5.4.0": true
   }
 }

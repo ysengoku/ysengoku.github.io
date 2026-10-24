@@ -15,6 +15,7 @@ export const en = {
   technologies: 'Technologies',
   seeGitHub: 'See on GitHub',
   seeWebsite: 'See Website',
+  explore: 'Explore',
   seeDetail: 'See detail',
   experiencesSection: 'Background',
   experienceSubtitle: 'My Experience and Education Overview',
@@ -25,10 +26,10 @@ export const en = {
       summary: '[Summary of About section]',
       text: '[Text of About section]',
     },
-    experience: {
-      label: 'Experiences',
-      summary: '[Summary of Experiences section]',
-      text: '[Text of Experiences section]',
+    background: {
+      label: 'Background',
+      summary: '[Summary of background section]',
+      text: '[Text of background section]',
     },
     skills: {
       label: 'Skills',
