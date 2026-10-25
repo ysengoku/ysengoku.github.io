@@ -6,7 +6,13 @@ export const en = {
   jobTitle: 'Software Engineer',
   about: {
     label: 'About',
-    summary: '[Summary of About section]',
+    summary: 'Who I am, where I come from, and what guides me in my work.',
+    content: [
+      'Somewhere in Japan, a little girl spent hours spinning a globe and poring over maps.',
+      'Her name was Yuko.',
+      'Later, I set off to see the world for real, and travel became the heart of my work. After fifteen years of sending travelers to every corner of the globe, it was my turn to pack my bags, bound for France.',
+      "Along the way, I came across tech, a destination I hadn't planned on, and one where I chose to stay. Since then, I never settle for a solution that just works. I look for the one that truly convinces, both me and the people who use it.",
+    ],
   },
   skills: {
     label: 'Skills',

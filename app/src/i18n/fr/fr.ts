@@ -6,7 +6,12 @@ export const fr = {
   jobTitle: 'Développeur Full-stack',
   about: {
     label: 'About',
-    summary: '[Summary of About section]',
+    summary: "Qui je suis, d'où je viens, et ce qui me guide dans mon travail.",
+    content: [
+      "Quelque part au Japon, une petite fille passait des heures à faire tourner un globe et à parcourir des cartes. Elle s'appelait Yuko.",
+      "Plus tard, je suis partie découvrir le monde pour de vrai, et le voyage est devenu le cœur de mon métier. Après quinze ans à faire voyager les autres aux quatre coins du monde, c'est moi qui ai fait mes valises, direction la France.",
+      "Chemin faisant, j'ai découvert l'univers de la tech, une destination que je n'avais pas prévue, et où j'ai choisi de rester. Depuis, je ne me contente pas d'une solution qui marche. Je cherche celle qui convainc vraiment, moi comme ceux qui s'en servent.",
+    ],
   },
   skills: {
     label: 'Compétences',

@@ -67,5 +67,6 @@
     max-height: 90vh;
     overflow-y: auto;
     background: var(--ys-grey-700);
+    border-radius: 0.5rem;
   }
 </style>
