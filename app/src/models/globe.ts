@@ -1,10 +1,9 @@
 export interface GlobeSpot {
   id: 'about' | 'background' | 'skills' | 'projects';
   labelKey: string;
+  summaryKey: string;
   lon: number;
   lat: number;
-  summaryKey: string;
-  textKey: string;
   view?: [number, number];
   viewNarrow?: [number, number];
 }

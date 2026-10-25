@@ -25,17 +25,17 @@
       <ul class="hidden lg:flex lg:flex-row lg:space-x-10 lg:items-center text-sm">
         <li>
           <RouterLink to="/skills" class="block py-2 text-lg nav-link">
-            {{ $t('skillsSection') }}
+            {{ $t('skills.label') }}
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/projects" class="block py-2 text-lg nav-link">
-            {{ $t('projectsSection') }}
+            {{ $t('projects.label') }}
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/background" class="block py-2 text-lg nav-link">
-            {{ $t('experiencesSection') }}
+            {{ $t('background.label') }}
           </RouterLink>
         </li>
         <li>
@@ -51,17 +51,17 @@
       >
         <li>
           <RouterLink to="/skills" class="block py-2 text-lg nav-link">
-            {{ $t('skillsSection') }}
+            {{ $t('skills.label') }}
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/projects" class="block py-2 text-lg nav-link">
-            {{ $t('projectsSection') }}
+            {{ $t('projects.label') }}
           </RouterLink>
         </li>
         <li>
           <RouterLink to="/background" class="block pt-2 pb-4 text-lg nav-link">
-            {{ $t('experiencesSection') }}
+            {{ $t('background.label') }}
           </RouterLink>
         </li>
         <li>

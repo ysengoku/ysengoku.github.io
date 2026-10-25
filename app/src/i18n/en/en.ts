@@ -4,42 +4,29 @@ import { projectsEn } from './projects';
 
 export const en = {
   jobTitle: 'Software Engineer',
-  githubButton: 'My GitHub',
-  skillsSection: 'Skills',
-  skillsSubtitle: 'Discover my technical skills in full-stack development',
-  skills: skillsEn,
-  projectsSection: 'Latest works',
-  projectsSubtitle: 'Explore my most recent projects and achievements.',
-  projects: projectsEn,
+  about: {
+    label: 'About',
+    summary: '[Summary of About section]',
+  },
+  skills: {
+    label: 'Skills',
+    summary: 'Discover my technical skills in full-stack development',
+    items: skillsEn,
+  },
+  projects: {
+    label: 'Latest works',
+    summary: 'Explore my most recent projects and achievements.',
+    items: projectsEn,
+  },
+  background: {
+    label: 'Background',
+    summary: 'My Experience and Education Overview',
+    items: timelineEn,
+  },
   languages: 'Languages',
   technologies: 'Technologies',
   seeGitHub: 'See on GitHub',
   seeWebsite: 'See Website',
   explore: 'Explore',
   seeDetail: 'See detail',
-  experiencesSection: 'Background',
-  experienceSubtitle: 'My Experience and Education Overview',
-  timeline: timelineEn,
-  globe: {
-    about: {
-      label: 'About',
-      summary: '[Summary of About section]',
-      text: '[Text of About section]',
-    },
-    background: {
-      label: 'Background',
-      summary: '[Summary of background section]',
-      text: '[Text of background section]',
-    },
-    skills: {
-      label: 'Skills',
-      summary: '[Summary of Skills section]',
-      text: '[Text of Skills section]',
-    },
-    projects: {
-      label: 'Projects',
-      summary: '[Summary of Projects section]',
-      text: '[Text of Projects section]',
-    },
-  },
 };
