@@ -62,11 +62,12 @@ export class GlobeRenderer {
     this.layout();
   }
 
-  draw(currentSpotId: GlobeSpot['id']) {
-    const stop =
-      globeSpots.find((s) => s.id === currentSpotId) ?? globeSpots.find((s) => s.id === 'about');
-    if (!stop) return;
-    const rotation = targetFor(stop, this.size.W, this.size.alpha);
+  rotationFor(spotId: GlobeSpot['id']): [number, number, number] {
+    const stop = globeSpots.find((s) => s.id === spotId) ?? globeSpots[0];
+    return targetFor(stop, this.size.W, this.size.alpha);
+  }
+
+  drawAt(rotation: [number, number, number]): void {
     this.projection.rotate(rotation);
     this.renderGlobe();
   }

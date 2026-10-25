@@ -12,11 +12,10 @@
   let renderer: GlobeRenderer | null = null;
 
   const handleResize = () => {
-    renderer?.resize();
-    renderer?.draw(globeStore.currentSpotId);
-    if (renderer) {
-      spotPlacements.value = renderer.getSpotPlacements();
-    }
+    if (!renderer) return;
+    renderer.resize();
+    renderer.drawAt(renderer.rotationFor(globeStore.currentSpotId));
+    spotPlacements.value = renderer.getSpotPlacements();
   };
 
   onMounted(() => {
@@ -24,7 +23,7 @@
     if (!canvas.value || !stage) return;
 
     renderer = new GlobeRenderer(canvas.value, stage);
-    renderer.draw(globeStore.currentSpotId);
+    renderer.drawAt(renderer.rotationFor(globeStore.currentSpotId));
     spotPlacements.value = renderer.getSpotPlacements();
 
     window.addEventListener('resize', handleResize);
