@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { usePopupStore } from '@store/popup';
-  import { useRoute } from 'vue-router';
-  import { watch } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
+  import { onMounted, onUnmounted, watch } from 'vue';
   import Footer from '@components/Footer.vue';
   import GlobeMenu from '@components/globe/GlobeMenu.vue';
   import Hero from '@components/Hero.vue';
@@ -10,6 +10,21 @@
 
   const popup = usePopupStore();
   const route = useRoute();
+  const router = useRouter();
+
+  function closePanel() {
+    router.push('/');
+  }
+
+  function onKeydown(e: KeyboardEvent) {
+    if (popup.isOpen) return;
+    if (e.key === 'Escape' && route.path !== '/') {
+      closePanel();
+    }
+  }
+
+  onMounted(() => window.addEventListener('keydown', onKeydown));
+  onUnmounted(() => window.addEventListener('keydown', onKeydown));
 
   watch(
     () => popup.isOpen,
@@ -20,10 +35,6 @@
 </script>
 
 <template>
-  <div v-if="popup.isOpen" class="popover-backdrop" @click="popup.close">
-    <ProjectDetailComponent v-if="popup.type === 'project'" />
-  </div>
-
   <header class="sticky top-0 z-50">
     <Navbar />
   </header>
@@ -35,13 +46,17 @@
       <Footer />
     </section>
 
-    <div v-if="route.path !== '/'" class="popover-backdrop">
+    <div v-if="route.path !== '/'" class="popover-backdrop" @click.self="closePanel">
       <div class="panel">
         <RouterLink to="/" aria-label="Close" class="block w-fit ml-auto pt-4">
           <i class="fa-solid fa-xmark"></i>
         </RouterLink>
         <RouterView />
       </div>
+    </div>
+
+    <div v-if="popup.isOpen" class="popover-backdrop" @click="popup.close">
+      <ProjectDetailComponent v-if="popup.type === 'project'" />
     </div>
   </main>
 </template>
