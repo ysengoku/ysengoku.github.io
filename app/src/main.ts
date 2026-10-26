@@ -4,7 +4,7 @@ import { createPinia } from 'pinia';
 import { createI18n } from 'vue-i18n';
 import { messages } from './i18n';
 import { useLocaleStore } from '@store/locale';
-import { router } from './router';
+import { router } from '@router';
 import { setLangToUrl } from '@utils/url';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fontsource/zen-kaku-gothic-new/400.css';

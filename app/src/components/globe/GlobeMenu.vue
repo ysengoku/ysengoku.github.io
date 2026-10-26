@@ -1,15 +1,17 @@
 <script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { ref, onMounted, onUnmounted, watch } from 'vue';
   import GlobeSpotButton from './GlobeSpotButton.vue';
-  import { globeSpots } from '@data/globeData';
   import { GlobeRenderer } from '@globe/GlobeRenderer';
+  import { globeSpots } from '@data/globeData';
+  import { router } from '@router';
   import { useGlobeStore } from '@store/globe';
   import type { SpotPlacement } from '@models/globe';
 
-  const canvas = ref<HTMLCanvasElement | null>(null);
-  const spotPlacements = ref<Array<SpotPlacement>>([]);
   const globeStore = useGlobeStore();
   let renderer: GlobeRenderer | null = null;
+  let animationFrameId: number | null = null;
+  const canvas = ref<HTMLCanvasElement | null>(null);
+  const spotPlacements = ref<Array<SpotPlacement>>([]);
 
   const handleResize = () => {
     if (!renderer) return;
@@ -31,7 +33,42 @@
 
   onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
   });
+
+  watch(
+    () => globeStore.currentSpotId,
+    (newId) => {
+      if (!renderer) return;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      const start = renderer.currentRotation();
+      const end = renderer.rotationFor(newId);
+      const startTime = performance.now();
+      const duration = 600;
+
+      const frame = (now: number) => {
+        if (!renderer) return;
+        const time = Math.min(1, (now - startTime) / duration);
+        renderer.drawAt([
+          start[0] + (end[0] - start[0]) * time,
+          start[1] + (end[1] - start[1]) * time,
+          start[2] + (end[2] - start[2]) * time,
+        ]);
+        spotPlacements.value = renderer.getSpotPlacements();
+        if (time < 1) {
+          animationFrameId = requestAnimationFrame(frame);
+        }
+        if (time >= 1 && globeStore.pendingPage) {
+          router.push(`/${globeStore.pendingPage}`);
+          globeStore.$patch({ pendingPage: null });
+        }
+      };
+      animationFrameId = requestAnimationFrame(frame);
+    }
+  );
 </script>
 
 <template>

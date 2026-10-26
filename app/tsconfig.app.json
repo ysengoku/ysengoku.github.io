@@ -3,17 +3,18 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "paths": {
-      "@components/*": ["./src/components/*.ts", "./src/components/*"],
-      "@data/*": ["./src/data/*.ts", "./src/data/*"],
-      "@models/*": ["./src/models/*.ts", "./src/models/*"],
-      "@store/*": ["./src/store/*.ts", "./src/store/*"],
       "@components": ["./src/components/index.ts", "./src/components"],
+      "@components/*": ["./src/components/*.ts", "./src/components/*"],
       "@data": ["./src/data/index.ts", "./src/data"],
+      "@data/*": ["./src/data/*.ts", "./src/data/*"],
       "@models": ["./src/models/index.ts", "./src/models"],
+      "@models/*": ["./src/models/*.ts", "./src/models/*"],
+      "@router": ["./src/router/index.ts", "./src/router"],
       "@store": ["./src/store/index.ts", "./src/store"],
+      "@store/*": ["./src/store/*.ts", "./src/store/*"],
       "@globe/*": ["./src/globe/*.ts", "./src/globe/*"],
-      "@utils/*": ["./src/utils/*.ts", "./src/utils/*"],
-      "@utils": ["./src/utils/index.ts", "./src/utils"]
+      "@utils": ["./src/utils/index.ts", "./src/utils"],
+      "@utils/*": ["./src/utils/*.ts", "./src/utils/*"]
     },
 
     /* Linting */

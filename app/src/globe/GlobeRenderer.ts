@@ -62,6 +62,10 @@ export class GlobeRenderer {
     this.layout();
   }
 
+  currentRotation(): [number, number, number] {
+    return this.projection.rotate();
+  }
+
   rotationFor(spotId: GlobeSpot['id']): [number, number, number] {
     const stop = globeSpots.find((s) => s.id === spotId) ?? globeSpots[0];
     return targetFor(stop, this.size.W, this.size.alpha);

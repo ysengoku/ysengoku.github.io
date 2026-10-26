@@ -1,6 +1,8 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue';
   import LanguageChoiceComponent from './LanguageChoiceComponent.vue';
+  import { globeSpots } from '@data/globeData';
+  import { useGlobeStore } from '@store/globe';
 
   function scrollTop() {
     history.pushState(null, '', window.location.pathname + window.location.search);
@@ -8,6 +10,7 @@
   }
 
   const open = ref(false);
+  const globeStore = useGlobeStore();
 </script>
 
 <template>
@@ -21,22 +24,14 @@
         <span>Menu</span>
         <i class="fas fa-bars"></i>
       </div>
-
       <ul class="hidden lg:flex lg:flex-row lg:space-x-10 lg:items-center text-sm">
-        <li>
-          <RouterLink to="/skills" class="block py-2 text-lg nav-link">
-            {{ $t('skills.label') }}
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/projects" class="block py-2 text-lg nav-link">
-            {{ $t('projects.label') }}
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/background" class="block py-2 text-lg nav-link">
-            {{ $t('background.label') }}
-          </RouterLink>
+        <li v-for="item in globeSpots" :key="item.id">
+          <button
+            class="block py-2 text-lg nav-link"
+            @click.prevent="globeStore.updateCurrentSpot(item.id, true)"
+          >
+            {{ $t(item.labelKey) }}
+          </button>
         </li>
         <li>
           <LanguageChoiceComponent />
@@ -49,20 +44,13 @@
         v-if="open"
         class="navbar-dropdown lg:hidden flex flex-col items-center space-y-2 px-8 py-4"
       >
-        <li>
-          <RouterLink to="/skills" class="block py-2 text-lg nav-link">
-            {{ $t('skills.label') }}
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/projects" class="block py-2 text-lg nav-link">
-            {{ $t('projects.label') }}
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/background" class="block pt-2 pb-4 text-lg nav-link">
-            {{ $t('background.label') }}
-          </RouterLink>
+        <li v-for="item in globeSpots" :key="item.id">
+          <button
+            class="block py-2 text-lg nav-link"
+            @click.prevent="globeStore.updateCurrentSpot(item.id, true)"
+          >
+            {{ $t(item.labelKey) }}
+          </button>
         </li>
         <li>
           <LanguageChoiceComponent />

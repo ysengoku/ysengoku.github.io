@@ -1,5 +1,8 @@
 <script setup lang="ts">
+  import { useGlobeStore } from '@store/globe';
   import type { GlobeSpot, SpotPlacement } from '@models/globe';
+
+  const globeStore = useGlobeStore();
 
   defineProps<{
     spot: GlobeSpot;
@@ -15,10 +18,10 @@
     :style="placement && { transform: `translate(${placement.x}px, ${placement.y}px)` }"
     tabIndex="-1"
   >
-    <RouterLink :to="`/${spot.id}`">
+    <button @click="globeStore.updateCurrentSpot(spot.id)">
       <span class="pin-dot"></span>
       <span class="pin-label">{{ $t(spot.labelKey) }}</span>
-    </RouterLink>
+    </button>
     <span class="pin-card">
       <h2 class="uppercase text-2xl font-bold">
         {{ $t(spot.labelKey) }}
@@ -57,7 +60,7 @@
   .pin-label {
     position: absolute;
     left: 0;
-    bottom: 16px;
+    bottom: 40px;
     transform: translateX(-50%);
     white-space: nowrap;
     font-size: 16px;
@@ -70,7 +73,7 @@
   .pin-card {
     position: absolute;
     left: 0;
-    bottom: 28px;
+    bottom: 48px;
     width: min(16rem, 100vw - 2rem);
     box-sizing: border-box;
     transform: translateX(calc(-50% + var(--shift, 0px))) translateY(8px) scale(0.96);
@@ -95,7 +98,7 @@
     content: '';
     position: absolute;
     left: calc(50% - var(--shift, 0px));
-    bottom: -7px;
+    bottom: -8px;
     width: 16px;
     height: 20px;
     background: var(--card);
