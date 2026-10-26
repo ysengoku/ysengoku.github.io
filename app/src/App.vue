@@ -4,6 +4,7 @@
   import { onMounted, onUnmounted, watch } from 'vue';
   import Footer from '@components/Footer.vue';
   import GlobeMenu from '@components/globe/GlobeMenu.vue';
+  import GlobePager from '@components/globe/GlobePager.vue';
   import Hero from '@components/Hero.vue';
   import Navbar from '@components/header/Navbar.vue';
   import ProjectDetailComponent from '@components/content/projects/ProjectDetailComponent.vue';
@@ -40,9 +41,10 @@
   </header>
 
   <main class="block">
-    <section id="stage">
-      <Hero />
+    <section id="stage" class="flex flex-col">
       <GlobeMenu />
+      <Hero />
+      <GlobePager />
       <Footer />
     </section>
 

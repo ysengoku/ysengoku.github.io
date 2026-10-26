@@ -48,15 +48,15 @@
       const end = renderer.rotationFor(newId);
       const startTime = performance.now();
       const duration = 600;
+      let lambdaDiff = end[0] - start[0];
+      if (lambdaDiff > 180) lambdaDiff -= 360;
+      if (lambdaDiff < -180) lambdaDiff += 360;
+      const phiDiff = end[1] - start[1];
 
       const frame = (now: number) => {
         if (!renderer) return;
         const time = Math.min(1, (now - startTime) / duration);
-        renderer.drawAt([
-          start[0] + (end[0] - start[0]) * time,
-          start[1] + (end[1] - start[1]) * time,
-          start[2] + (end[2] - start[2]) * time,
-        ]);
+        renderer.drawAt([start[0] + lambdaDiff * time, start[1] + phiDiff * time, start[2]]);
         spotPlacements.value = renderer.getSpotPlacements();
         if (time < 1) {
           animationFrameId = requestAnimationFrame(frame);

@@ -9,7 +9,7 @@
 <template>
   <div
     id="hero"
-    class="flex flex-col items-start justify-start w-full h-full p-8 relative z-20 pointer-events-none"
+    class="flex flex-col items-start justify-start w-full p-8 relative z-20 pointer-events-none flex-1"
   >
     <div v-if="localeStore.locale === 'ja'" class="text-lg md:text-2xl ps-4">
       {{ $t('jobTitle') }}
