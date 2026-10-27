@@ -71,7 +71,7 @@
           :aria-label="$t('a11y.close')"
           @click="closePanel"
         >
-          <i class="fa-solid fa-xmark"></i>
+          <FontAwesomeIcon icon="xmark" />
         </button>
         <RouterView />
       </div>

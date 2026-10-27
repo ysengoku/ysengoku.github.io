@@ -22,10 +22,10 @@
     class="flex justify-start items-center space-x-2 cursor-pointer relative"
     @click="toggleDropdown"
   >
-    <i class="fa-solid fa-globe"></i>
+    <FontAwesomeIcon icon="globe" />
     <span>{{ localeStore.getCurrentLangName() }}</span>
-    <i v-if="!open" class="fa-solid fa-caret-down ps-2"></i>
-    <i v-else class="fa-solid fa-caret-left ps-2 me-0"></i>
+    <FontAwesomeIcon v-if="!open" icon="caret-down" class="ps-2" />
+    <FontAwesomeIcon v-else icon="caret-left" class="ps-2 me-0" />
 
     <ul v-if="open" class="absolute top-0 mt-8 right-0 rounded z-50 min-w-full">
       <li

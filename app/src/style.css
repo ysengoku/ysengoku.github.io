@@ -87,7 +87,7 @@ body {
 
 body {
   background: var(--bg);
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
   font-size: 1.0625rem;
 }
 

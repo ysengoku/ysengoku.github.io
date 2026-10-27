@@ -6,14 +6,48 @@ import { messages } from './i18n';
 import { useLocaleStore } from '@store/locale';
 import { router } from '@router';
 import { setLangToUrl } from '@utils/url';
-import '@fortawesome/fontawesome-free/css/all.css';
-import '@fontsource/zen-kaku-gothic-new/400.css';
-import '@fontsource/zen-kaku-gothic-new/500.css';
-import '@fontsource/zen-kaku-gothic-new/700.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  faXmark,
+  faArrowRight,
+  faChevronLeft,
+  faChevronRight,
+  faPlane,
+  faBars,
+  faGlobe,
+  faCaretDown,
+  faCaretLeft,
+  faLaptop,
+  faCode,
+  faInfinity,
+} from '@fortawesome/free-solid-svg-icons';
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import '@fontsource/zen-kaku-gothic-new/latin-400.css';
+import '@fontsource/zen-kaku-gothic-new/latin-500.css';
+import '@fontsource/zen-kaku-gothic-new/latin-700.css';
 import './style.css';
 import type { Locale } from '@store/locale';
 
+library.add(
+  faXmark,
+  faArrowRight,
+  faChevronLeft,
+  faChevronRight,
+  faPlane,
+  faBars,
+  faGlobe,
+  faCaretDown,
+  faCaretLeft,
+  faLaptop,
+  faCode,
+  faInfinity,
+  faLinkedinIn,
+  faGithub
+);
+
 const app = createApp(App);
+app.component('FontAwesomeIcon', FontAwesomeIcon);
 const pinia = createPinia();
 const i18n = createI18n({
   legacy: false,

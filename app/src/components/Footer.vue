@@ -8,10 +8,10 @@
   <div class="sticky bottom-0 flex items-center justify-center gap-4 pb-2 z-50">
     <div class="flex items-center gap-2">
       <a class="btn-social" :href="contact.linkedin" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in fa-xl"></i>
+        <FontAwesomeIcon :icon="['fab', 'linkedin-in']" size="xl" />
       </a>
       <a class="btn-social" :href="contact.github" aria-label="GitHub">
-        <i class="fa-brands fa-github fa-xl"></i>
+        <FontAwesomeIcon :icon="['fab', 'github']" size="xl" />
       </a>
     </div>
     <p class="copyright">Copyright &copy; {{ contact.name }} {{ year }}</p>

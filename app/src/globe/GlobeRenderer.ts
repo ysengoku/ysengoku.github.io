@@ -3,7 +3,7 @@ import type { GeometryObject, Topology } from 'topojson-specification';
 import type { GlobeSpot, SpotPlacement } from '@models/globe';
 import { geoOrthographic, geoPath, geoDistance } from 'd3-geo';
 import { feature } from 'topojson-client';
-import world from 'world-atlas/countries-110m.json';
+import world from 'world-atlas/land-110m.json';
 import { globeSpots } from '@data/globeData';
 import { targetFor } from './rotation';
 

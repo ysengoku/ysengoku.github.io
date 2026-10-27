@@ -9,7 +9,7 @@
 <template>
   <div>
     <span class="inline-flex items-center justify-center w-24 h-24 rounded-full text-4xl mb-6">
-      <i :class="item.icon"></i>
+      <FontAwesomeIcon :icon="item.icon" />
     </span>
     <h4 class="text-xl font-semibold mb-3">
       {{ $t(item.titleKey) }}

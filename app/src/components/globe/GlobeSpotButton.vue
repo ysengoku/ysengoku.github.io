@@ -33,7 +33,7 @@
         class="open cursor-pointer"
         @click="navigateWithTransition(`/${spot.id}`)"
       >
-        {{ $t('explore') }} <i class="fa-solid fa-arrow-right"></i>
+        {{ $t('explore') }} <FontAwesomeIcon icon="arrow-right" />
       </button>
     </span>
   </div>

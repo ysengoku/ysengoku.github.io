@@ -28,7 +28,7 @@
         :aria-label="$t('a11y.prev')"
         @click="goTo(-1)"
       >
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        <FontAwesomeIcon icon="chevron-left" aria-hidden="true" />
       </button>
       <span
         id="pager-hint"
@@ -43,7 +43,7 @@
         :aria-label="$t('a11y.next')"
         @click="goTo(1)"
       >
-        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <FontAwesomeIcon icon="chevron-right" aria-hidden="true" />
       </button>
     </div>
   </div>

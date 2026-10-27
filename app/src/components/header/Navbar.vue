@@ -22,7 +22,7 @@
 
       <div class="lg:hidden flex items-center space-x-2 cursor-pointer" @click="open = !open">
         <span>Menu</span>
-        <i class="fas fa-bars"></i>
+        <FontAwesomeIcon icon="bars" />
       </div>
       <ul class="hidden lg:flex lg:flex-row lg:space-x-10 lg:items-center text-sm">
         <li v-for="item in globeSpots" :key="item.id">

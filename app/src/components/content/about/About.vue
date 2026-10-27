@@ -11,7 +11,7 @@
         </p>
         <div v-if="index === 1" class="fade-plane">
           <span class="l"></span>
-          <i class="fa-solid fa-plane text-sm"></i>
+          <FontAwesomeIcon icon="plane" class="text-sm" />
           <span class="r"></span>
         </div>
       </div>
