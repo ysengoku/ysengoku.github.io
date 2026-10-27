@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { navigateWithTransition } from '@utils/viewTransition';
   import { useGlobeStore } from '@store/globe';
   import type { GlobeSpot, SpotPlacement } from '@models/globe';
 
@@ -18,7 +19,7 @@
     :style="placement && { transform: `translate(${placement.x}px, ${placement.y}px)` }"
     tabIndex="-1"
   >
-    <button @click="globeStore.updateCurrentSpot(spot.id)">
+    <button class="cursor-pointer" @click="globeStore.updateCurrentSpot(spot.id)">
       <span class="pin-dot"></span>
       <span class="pin-label">{{ $t(spot.labelKey) }}</span>
     </button>
@@ -27,9 +28,13 @@
         {{ $t(spot.labelKey) }}
       </h2>
       <span class="text-sm">{{ $t(spot.summaryKey) }}</span>
-      <RouterLink :to="`/${spot.id}`" class="open">
+      <button
+        type="button"
+        class="open cursor-pointer"
+        @click="navigateWithTransition(`/${spot.id}`)"
+      >
         {{ $t('explore') }} <i class="fa-solid fa-arrow-right"></i>
-      </RouterLink>
+      </button>
     </span>
   </div>
 </template>
@@ -110,7 +115,7 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(calc(-50% + var(--shift, 0px))) translateY(0) scale(1);
-    view-transition-name: stopcard;
+    view-transition-name: spotcard;
   }
 
   .pin.active .pin-label {

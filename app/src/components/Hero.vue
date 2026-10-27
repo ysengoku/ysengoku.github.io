@@ -1,4 +1,3 @@
-<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
   import { useLocaleStore } from '@store/locale';
   import { contact } from '@data/contactData';

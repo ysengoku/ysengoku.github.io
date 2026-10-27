@@ -5,6 +5,12 @@ import { projectsEn } from './projects';
 export const en = {
   jobTitle: 'Software Engineer',
   pagerHint: 'Use the arrows to turn the globe',
+  a11y: {
+    pager: 'Turn the globe',
+    prev: 'Previous section',
+    next: 'Next section',
+    close: 'Close',
+  },
   about: {
     label: 'About',
     summary: 'Who I am, where I come from, and what guides me in my work.',

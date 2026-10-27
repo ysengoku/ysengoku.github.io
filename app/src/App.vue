@@ -1,7 +1,10 @@
 <script setup lang="ts">
-  import { usePopupStore } from '@store/popup';
-  import { useRoute, useRouter } from 'vue-router';
+  import { useRoute } from 'vue-router';
   import { onMounted, onUnmounted, watch } from 'vue';
+  import { globeSpots } from '@data/globeData';
+  import { navigateWithTransition } from '@utils/viewTransition';
+  import { useGlobeStore } from '@store/globe';
+  import { usePopupStore } from '@store/popup';
   import Footer from '@components/Footer.vue';
   import GlobeMenu from '@components/globe/GlobeMenu.vue';
   import GlobePager from '@components/globe/GlobePager.vue';
@@ -10,11 +13,11 @@
   import ProjectDetailComponent from '@components/content/projects/ProjectDetailComponent.vue';
 
   const popup = usePopupStore();
+  const globeStore = useGlobeStore();
   const route = useRoute();
-  const router = useRouter();
 
   function closePanel() {
-    router.push('/');
+    navigateWithTransition('/');
   }
 
   function onKeydown(e: KeyboardEvent) {
@@ -25,13 +28,25 @@
   }
 
   onMounted(() => window.addEventListener('keydown', onKeydown));
-  onUnmounted(() => window.addEventListener('keydown', onKeydown));
+  onUnmounted(() => window.removeEventListener('keydown', onKeydown));
 
   watch(
     () => popup.isOpen,
     (isOpen) => {
       document.body.style.overflow = isOpen ? 'hidden' : '';
     }
+  );
+
+  watch(
+    () => route.path,
+    (path) => {
+      document.body.classList.toggle('page-open', path !== '/');
+      const spot = globeSpots.find((s) => s.id === path.slice(1));
+      if (spot) {
+        globeStore.$patch({ currentSpotId: spot.id });
+      }
+    },
+    { immediate: true }
   );
 </script>
 
@@ -50,9 +65,14 @@
 
     <div v-if="route.path !== '/'" class="popover-backdrop" @click.self="closePanel">
       <div class="panel">
-        <RouterLink to="/" aria-label="Close" class="block w-fit ml-auto pt-4">
+        <button
+          type="button"
+          class="block w-fit ml-auto pt-4 cursor-pointer"
+          :aria-label="$t('a11y.close')"
+          @click="closePanel"
+        >
           <i class="fa-solid fa-xmark"></i>
-        </RouterLink>
+        </button>
         <RouterView />
       </div>
     </div>
@@ -85,5 +105,11 @@
     overflow-y: auto;
     background: var(--ys-grey-700);
     border-radius: 0.5rem;
+    view-transition-name: spotcard;
+  }
+
+  ::view-transition-group(spotcard) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 </style>

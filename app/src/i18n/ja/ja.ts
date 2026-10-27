@@ -5,6 +5,12 @@ import { projectsJa } from './projects';
 export const ja = {
   jobTitle: 'ソフトウェアエンジニア',
   pagerHint: '矢印で移動',
+  a11y: {
+    pager: 'セクションの切り替え',
+    prev: '前のセクション',
+    next: '次のセクション',
+    close: '閉じる',
+  },
   about: {
     label: 'About',
     summary: '私について、私のルーツ、そして仕事で大切にしていること。',

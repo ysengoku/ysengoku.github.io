@@ -26,7 +26,7 @@
     :aria-labelledby="`popover-title-${popup.contentId}`"
   >
     <div class="project-detail-panel" @click.stop>
-      <button aria-label="Close" class="close-btn" @click="closePopup">
+      <button class="close-btn" :aria-label="$t('a11y.close')" @click="closePopup">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="project-detail-content flex flex-col justify-center items-center mx-8 mt-8 gap-4">

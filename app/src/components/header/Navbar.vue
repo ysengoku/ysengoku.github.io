@@ -27,7 +27,7 @@
       <ul class="hidden lg:flex lg:flex-row lg:space-x-10 lg:items-center text-sm">
         <li v-for="item in globeSpots" :key="item.id">
           <button
-            class="block py-2 text-lg nav-link"
+            class="block py-2 text-lg nav-link cursor-pointer"
             @click.prevent="globeStore.updateCurrentSpot(item.id, true)"
           >
             {{ $t(item.labelKey) }}
@@ -46,8 +46,11 @@
       >
         <li v-for="item in globeSpots" :key="item.id">
           <button
-            class="block py-2 text-lg nav-link"
-            @click.prevent="globeStore.updateCurrentSpot(item.id, true)"
+            class="block py-2 text-lg nav-link cursor-pointer"
+            @click.prevent="
+              globeStore.updateCurrentSpot(item.id, true);
+              open = false;
+            "
           >
             {{ $t(item.labelKey) }}
           </button>

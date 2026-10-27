@@ -1,7 +1,15 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
   import { useGlobeStore } from '@store/globe';
 
   const globeStore = useGlobeStore();
+  const used = ref(false);
+
+  function goTo(delta: 1 | -1) {
+    used.value = true;
+    if (delta === 1) globeStore.goToNextSpot();
+    if (delta === -1) globeStore.goToPreviousSpot();
+  }
 </script>
 
 <template>
@@ -9,14 +17,16 @@
     <div
       id="pager"
       class="flex justify-center items-center p-2 w-fit gap-4"
-      aria-label="Turn the globe"
+      :class="{ 'nudge-off': used }"
+      :aria-label="$t('a11y.pager')"
+      role="group"
     >
       <button
         id="pager-prev"
         type="button"
-        class="w-12 h-12 cursor-pointer bg-transparent border-none"
-        aria-label="Previous section"
-        @click="globeStore.goToPreviousSpot()"
+        class="w-12 h-12 bg-transparent border-none cursor-pointer"
+        :aria-label="$t('a11y.prev')"
+        @click="goTo(-1)"
       >
         <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
       </button>
@@ -29,9 +39,9 @@
       <button
         id="pager-next"
         type="button"
-        class="w-12 h-12 cursor-pointer bg-transparent border-none"
-        aria-label="Next section"
-        @click="globeStore.goToNextSpot()"
+        class="w-12 h-12 bg-transparent border-none cursor-pointer"
+        :aria-label="$t('a11y.next')"
+        @click="goTo(1)"
       >
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
       </button>
@@ -74,6 +84,16 @@
     5%,
     15% {
       transform: translateX(var(--nudge));
+    }
+  }
+
+  #pager.nudge-off button {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pager button {
+      animation: none;
     }
   }
 </style>

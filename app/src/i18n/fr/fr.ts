@@ -5,6 +5,12 @@ import { projectsFr } from './projects';
 export const fr = {
   jobTitle: 'Développeur Full-stack',
   pagerHint: 'Utilisez les flèches pour tourner le globe',
+  a11y: {
+    pager: 'Tourner le globe',
+    prev: 'Section précédente',
+    next: 'Section suivante',
+    close: 'Fermer',
+  },
   about: {
     label: 'About',
     summary: "Qui je suis, d'où je viens, et ce qui me guide dans mon travail.",

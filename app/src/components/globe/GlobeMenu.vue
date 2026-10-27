@@ -3,7 +3,7 @@
   import GlobeSpotButton from './GlobeSpotButton.vue';
   import { GlobeRenderer } from '@globe/GlobeRenderer';
   import { globeSpots } from '@data/globeData';
-  import { router } from '@router';
+  import { navigateWithTransition, prefersReducedMotion } from '@utils/viewTransition';
   import { useGlobeStore } from '@store/globe';
   import type { SpotPlacement } from '@models/globe';
 
@@ -47,7 +47,7 @@
       const start = renderer.currentRotation();
       const end = renderer.rotationFor(newId);
       const startTime = performance.now();
-      const duration = 600;
+      const duration = prefersReducedMotion() ? 0 : 600;
       let lambdaDiff = end[0] - start[0];
       if (lambdaDiff > 180) lambdaDiff -= 360;
       if (lambdaDiff < -180) lambdaDiff += 360;
@@ -55,14 +55,14 @@
 
       const frame = (now: number) => {
         if (!renderer) return;
-        const time = Math.min(1, (now - startTime) / duration);
+        const time = duration ? Math.min(1, (now - startTime) / duration) : 1;
         renderer.drawAt([start[0] + lambdaDiff * time, start[1] + phiDiff * time, start[2]]);
         spotPlacements.value = renderer.getSpotPlacements();
         if (time < 1) {
           animationFrameId = requestAnimationFrame(frame);
         }
         if (time >= 1 && globeStore.pendingPage) {
-          router.push(`/${globeStore.pendingPage}`);
+          navigateWithTransition(`/${globeStore.pendingPage}`);
           globeStore.$patch({ pendingPage: null });
         }
       };
