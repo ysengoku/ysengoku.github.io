@@ -7,7 +7,7 @@ export const skillsJa = {
   backend: {
     title: 'Backend',
     description:
-      'C/C++ によるシステムプログラミングおよび Node.js / TypeScript を用いた Web バックエンド開発の基礎を有し、API 設計とデータ永続化を重視した実装を行います。',
+      'Node.js / JavaScript / TypeScript と PHP / Symfony による Web バックエンド開発を行い、API 設計とデータ永続化を重視しています。C/C++ によるシステムプログラミングの基礎も有しています。',
   },
   devops: {
     title: 'DevOps',

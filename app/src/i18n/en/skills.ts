@@ -7,7 +7,7 @@ export const skillsEn = {
   backend: {
     title: 'Backend',
     description:
-      'Solid foundations in systems programming (C/C++) and web backend development with Node.js/TypeScript, focused on API design and data persistence.',
+      'Web backend development with Node.js/JavaScript/TypeScript and PHP/Symfony, focused on API design and data persistence, built on solid foundations in systems programming (C/C++).',
   },
   devops: {
     title: 'DevOps',

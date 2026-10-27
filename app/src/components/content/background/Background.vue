@@ -30,7 +30,7 @@
 </script>
 
 <template>
-  <section id="background" class="py-16">
+  <section id="background" class="py-8">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold uppercase tracking-wide">{{ $t('background.label') }}</h2>

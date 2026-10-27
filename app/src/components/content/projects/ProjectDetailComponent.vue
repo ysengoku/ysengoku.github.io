@@ -41,16 +41,13 @@
           {{ $t(item.introKey) }}
         </p>
         <a
-          :href="item.link ?? ''"
+          :href="item.links?.[0]?.url"
           target="_blank"
           rel="noopener"
           class="flex w-full justify-center"
         >
           <img class="project-image" :src="item.image" :alt="item.title" />
         </a>
-        <p class="project-detail mt-4 text-start">
-          {{ $t(item.descriptionKey) }}
-        </p>
         <ul class="text-start mt-3">
           <li>
             <strong>{{ $t('languages') }}: </strong>
@@ -61,18 +58,31 @@
             {{ item.techTools }}
           </li>
         </ul>
+        <p class="project-detail mt-4 text-start">
+          {{ $t(item.descriptionKey) }}
+        </p>
         <div class="flex flex-col justify-center items-center gap-6 my-8">
-          <a class="btn-m-0 text-uppercase" :href="item.github" target="_blank" rel="noopener">
+          <a
+            v-for="repo in item.repos"
+            :key="repo.url"
+            class="btn-m-0 text-uppercase"
+            :href="repo.url"
+            target="_blank"
+            rel="noopener"
+          >
             {{ $t('seeGitHub') }}
+            <template v-if="item.repos.length > 1"> · {{ repo.label }}</template>
           </a>
           <a
-            v-if="item.link"
+            v-for="link in item.links"
+            :key="link.url"
             class="btn-m-0 text-uppercase"
-            :href="item.link"
+            :href="link.url"
             target="_blank"
             rel="noopener"
           >
             {{ $t('seeWebsite') }}
+            <template v-if="item.links && item.links.length > 1"> · {{ link.label }}</template>
           </a>
         </div>
       </div>

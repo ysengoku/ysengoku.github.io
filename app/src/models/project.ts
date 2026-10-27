@@ -4,9 +4,14 @@ export interface ProjectItem {
   subtitleKey: string;
   introKey: string;
   image: string;
-  link?: string;
+  links?: ProjectLink[];
   descriptionKey: string;
   techLanguage: string;
   techTools: string;
-  github: string;
+  repos: ProjectLink[];
+}
+
+export interface ProjectLink {
+  label: string;
+  url: string;
 }
