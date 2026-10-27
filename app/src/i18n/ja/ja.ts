@@ -4,6 +4,7 @@ import { projectsJa } from './projects';
 
 export const ja = {
   jobTitle: 'ソフトウェアエンジニア',
+  pagerHint: '矢印で移動',
   about: {
     label: 'About',
     summary: '私について、私のルーツ、そして仕事で大切にしていること。',

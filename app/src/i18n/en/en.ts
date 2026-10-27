@@ -4,6 +4,7 @@ import { projectsEn } from './projects';
 
 export const en = {
   jobTitle: 'Software Engineer',
+  pagerHint: 'Use the arrows to turn the globe',
   about: {
     label: 'About',
     summary: 'Who I am, where I come from, and what guides me in my work.',

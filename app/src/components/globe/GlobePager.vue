@@ -22,9 +22,9 @@
       </button>
       <span
         id="pager-hint"
-        class="hint whitespace-nowrap transition-opacity duration-400 opacity-75"
+        class="hint whitespace-nowrap transition-opacity duration-400 opacity-75 max-sm:hidden"
       >
-        Drag or tap the arrows
+        {{ $t('pagerHint') }}
       </span>
       <button
         id="pager-next"
@@ -50,6 +50,30 @@
 
     button:hover {
       background: var(--ys-grey-500);
+    }
+  }
+
+  #pager-prev {
+    --nudge: -4px;
+    animation: move 3s infinite;
+  }
+
+  #pager-next {
+    --nudge: 4px;
+    animation: move 3s infinite;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes move {
+    0%,
+    10%,
+    20%,
+    100% {
+      transform: translateX(0);
+    }
+    5%,
+    15% {
+      transform: translateX(var(--nudge));
     }
   }
 </style>
