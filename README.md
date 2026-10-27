@@ -1,4 +1,4 @@
-# Portfolio Website (v2)
+# Portfolio Website (v3)
 
 Personal portfolio website built as a **Single Page Application** to present projects, skills, and professional background.
 
@@ -7,17 +7,19 @@ Personal portfolio website built as a **Single Page Application** to present pro
 
 ## Overview
 
-This project is the second major iteration of my portfolio website.  
-Version 2 replaces the initial Bootstrap-based static template with a modern Vue.js architecture, focusing on maintainability, performance, and scalability.
+This project is the third major iteration of my portfolio website.  
+Version 3 turns the home page into an interactive globe: each section is a spot on the globe, and the globe rotates to it before the section opens.
 
 ## Features
 
 - Frontend-only Single Page Application (SPA)
+- Interactive globe home (d3-geo orthographic projection drawn on Canvas)
+- Navigation by header menu, pins and pager, rotating the globe along the shortest path
+- Section panels with View Transitions and shareable hash URLs (e.g. `/#/projects`)
 - Responsive layout
 - Multi-language support (English, French, Japanese)
 - Language persistence via URL query parameter
 - Project detail popup system
-- Clean and minimal UI
 
 ## Tech Stack
 
@@ -32,6 +34,8 @@ Version 2 replaces the initial Bootstrap-based static template with a modern Vue
 - TypeScript
 - Pinia (state management)
 - Vue I18n (language management)
+- Vue Router (hash history)
+- d3-geo, topojson-client, world-atlas (globe rendering)
 - Tailwind CSS
 - Vite (local development on localhost)
 
@@ -39,6 +43,7 @@ Version 2 replaces the initial Bootstrap-based static template with a modern Vue
 #### Local setup
 
 ```bash
+cd app
 npm install
 npm run dev
 ```
@@ -58,7 +63,7 @@ This generates optimized static assets in the dist/ directory.
 #### Hosting
 
 - Static files are served via GitHub Pages. No backend or server-side rendering.
-- Client-side routing is not used (hash-based navigation only)
+-  Client-side routing uses hash history (/#/section), so no server configuration is needed.
 - The deployment process is fully frontend-oriented and optimized for static hosting.
 
 ## Internationalization
@@ -78,20 +83,29 @@ app
 │   ├── style.css # Global styles
 │   ├── components/ # Vue components
 │   ├── data/ # Static data
+│   ├── globe/ # Globe rendering and rotation 
 │   ├── i18n/ # Language dictionaries and i18n configuration
 │   ├── models/ # TypeScript interfaces and type definitions
+│   ├── router/ # Vue Router configuration 
 │   ├── store/ # Pinia stores
 │   └── utils/
 ├── public/ # Static assets
 ├── index.html   
 └── .github  
     └── workflows 
-        └── deploy.yaml # GitHub Actions workflow for GitHub Pages deployment
+        └── deploy.yml # GitHub Actions workflow for GitHub Pages deployment
 ```
 
 ## Versioning
 
 ![Latest Release](https://img.shields.io/github/v/release/ysengoku/ysengoku.github.io?style=flat)
+
+####  v3.0.0
+
+- Interactive globe home page with section panels
+- New and grouped projects
+- Accessibility improvements (Esc to close, reduced motion support)
+- Upgraded to TypeScript 6, ESLint 10 and Node 24
 
 ####  **v2.1.1**
 
