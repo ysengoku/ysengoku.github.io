@@ -100,6 +100,12 @@ app
 
 ![Latest Release](https://img.shields.io/github/v/release/ysengoku/ysengoku.github.io?style=flat)
 
+####  v3.0.1
+
+- Faster first load (WebP images, SVG icons, lighter fonts and map data, lazy-loaded pages)
+- Boot screen with a reload link when loading takes too long
+- Pins and cards stay usable if the globe fails to render
+
 ####  v3.0.0
 
 - Interactive globe home page with section panels
