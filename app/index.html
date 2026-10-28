@@ -6,8 +6,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="theme-color" content="#07293d" />
-    <title>Yuko SENGOKU - Fullstack Developper</title>
-    <link rel="icon" type="image/x-icon" href="/img/navbar-logo.svg" />
+    <title>Yuko SENGOKU - Software Engineer</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <style>
       html,
       body {
@@ -19,21 +19,34 @@
         inset: 0;
         overflow: hidden;
         pointer-events: none;
-        /* Fades from the sky into the ocean colors, where the globe will appear */
         background: linear-gradient(to bottom, #07293d 40%, #134a6a 75%, #216e9b);
+        text-align: center;
+        color: #f1f0f0;
+        font: 400 1rem/1.5 'Hiragino Sans', 'Yu Gothic', sans-serif;
       }
-      .boot-text {
+      .boot-text,
+      .boot-timeout {
         position: absolute;
         left: 0;
         right: 0;
-        top: 50dvh;
         margin: 0;
         padding: 0 16px;
-        text-align: center;
-        color: #f1f0f0;
-        font: 400 1.25rem/1.5 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      }
+      .boot-text {
+        top: 50dvh;
         letter-spacing: 0.04em;
         animation: boot-pulse 1.6s ease-in-out infinite alternate;
+      }
+      .boot-timeout {
+        font-size: 0.9rem;
+        top: calc(50dvh + 3rem);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: auto;
+        animation: boot-show 0.4s ease-out 8s forwards;
+      }
+      .boot-timeout a {
+        color: inherit;
       }
       @keyframes boot-pulse {
         from {
@@ -51,12 +64,24 @@
           opacity: 0.8;
         }
       }
+      @keyframes boot-show {
+        to {
+          opacity: 0.8;
+          visibility: visible;
+        }
+      }
     </style>
   </head>
   <body id="page-top">
     <div id="app">
       <div class="boot" role="status">
         <p class="boot-text">Getting ready for a look around…</p>
+      </div>
+      <div class="boot" role="status">
+        <p class="boot-text">Getting ready for a look around</p>
+        <p class="boot-timeout">
+          This is taking longer than usual. <a href="">Try reloading</a>
+        </p>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

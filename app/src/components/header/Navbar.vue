@@ -17,7 +17,7 @@
   <nav class="w-full text-white">
     <div class="flex items-center justify-between w-full px-8 py-4">
       <a href="#" class="flex items-center mt-2" @click.prevent="scrollTop">
-        <img src="/img/navbar-logo.svg" alt="logo" class="lg:h-10 h-8" />
+        <img src="/img/logo.svg" alt="logo" class="lg:h-10 h-8" />
       </a>
 
       <div class="lg:hidden flex items-center space-x-2 cursor-pointer" @click="open = !open">

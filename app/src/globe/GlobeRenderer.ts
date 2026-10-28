@@ -36,6 +36,7 @@ export class GlobeRenderer {
   private colors = {} as Record<ColorToken, string>;
   private size = { W: 0, H: 0, R: 0, cx: 0, cy: 0, dpr: 1, alpha: 60 };
   private sphere = { type: 'Sphere' as const };
+  private renderErrorLogged = false;
 
   // Route segments between consecutive points, closed back to the first so the trip goes all the way round.
   private route = {
@@ -73,7 +74,14 @@ export class GlobeRenderer {
 
   drawAt(rotation: [number, number, number]): void {
     this.projection.rotate(rotation);
-    this.renderGlobe();
+    try {
+      this.renderGlobe();
+    } catch (e) {
+      if (!this.renderErrorLogged) {
+        console.error(`Failed to render the globe: ${e}`);
+        this.renderErrorLogged = true;
+      }
+    }
   }
 
   getSpotPlacements(): Array<SpotPlacement> {
