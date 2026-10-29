@@ -125,6 +125,17 @@ nav {
   background-color: var(--ys-secondary-600);
 }
 
+.popover-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--ys-grey-600-rgb), 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 1000;
+}
+
 :lang(ja) {
   line-height: 150%;
   p {

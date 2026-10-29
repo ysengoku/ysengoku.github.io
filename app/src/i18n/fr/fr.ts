@@ -28,6 +28,7 @@ export const fr = {
   projects: {
     label: 'Derniers projets',
     summary: 'Explorez mes projets et réalisations les plus récents.',
+    closeDetail: 'Masquer les détails du projet',
     items: projectsFr,
   },
   background: {

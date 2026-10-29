@@ -1,107 +1,74 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  import { projectItems } from '@data/projectsData';
-  import { usePopupStore } from '@store/popup';
+  import type { ProjectItem } from '@models/project';
 
-  const popup = usePopupStore();
-
-  const item = computed(() => {
-    const id = popup.contentId;
-    if (!id == null) {
-      return null;
-    }
-    return projectItems.find((p) => p.id === id) ?? null;
-  });
-
-  function closePopup() {
-    popup.close();
-  }
+  defineProps<{ item: ProjectItem }>();
 </script>
 
 <template>
-  <div
-    v-if="popup.isOpen && item"
-    role="dialog"
-    aria-modal="true"
-    :aria-labelledby="`popover-title-${popup.contentId}`"
-  >
-    <div class="project-detail-panel" @click.stop>
-      <button class="close-btn" :aria-label="$t('a11y.close')" @click="closePopup">
-        <FontAwesomeIcon icon="xmark" />
-      </button>
-      <div class="project-detail-content flex flex-col justify-center items-center mx-8 mt-8 gap-4">
-        <h2
-          :id="`popover-title-${popup.contentId}`"
-          class="text-2xl md:text-3xl font-bold uppercase mt-8"
-        >
-          {{ item.title }}
-        </h2>
+  <div class="project-detail-content flex flex-col justify-center items-center mx-8 gap-4">
+    <h3 class="text-2xl md:text-3xl font-bold uppercase mt-8">
+      {{ item.title }}
+    </h3>
 
-        <p class="item-intro text-muted md:px-8 text-start md:text-center">
-          {{ $t(item.introKey) }}
-        </p>
-        <a
-          :href="item.links?.[0]?.url"
-          target="_blank"
-          rel="noopener"
-          class="flex w-full justify-center"
-        >
-          <img class="project-image" :src="item.image" :alt="item.title" />
-        </a>
-        <ul class="text-start mt-3">
-          <li>
-            <strong>{{ $t('languages') }}: </strong>
-            {{ item.techLanguage }}
-          </li>
-          <li>
-            <strong>{{ $t('technologies') }}: </strong>
-            {{ item.techTools }}
-          </li>
-        </ul>
-        <p class="project-detail mt-4 text-start">
-          {{ $t(item.descriptionKey) }}
-        </p>
-        <div class="flex flex-col justify-center items-center gap-6 my-8">
-          <a
-            v-for="repo in item.repos"
-            :key="repo.url"
-            class="btn-m-0 text-uppercase"
-            :href="repo.url"
-            target="_blank"
-            rel="noopener"
-          >
-            {{ $t('seeGitHub') }}
-            <template v-if="item.repos.length > 1"> · {{ repo.label }}</template>
-          </a>
-          <a
-            v-for="link in item.links"
-            :key="link.url"
-            class="btn-m-0 text-uppercase"
-            :href="link.url"
-            target="_blank"
-            rel="noopener"
-          >
-            {{ $t('seeWebsite') }}
-            <template v-if="item.links && item.links.length > 1"> · {{ link.label }}</template>
-          </a>
-        </div>
-      </div>
+    <p class="item-intro text-muted md:px-8 text-start md:text-center">
+      {{ $t(item.introKey) }}
+    </p>
+    <a
+      :href="item.links?.[0]?.url"
+      target="_blank"
+      rel="noopener"
+      class="flex w-full justify-center"
+    >
+      <img class="project-image" :src="item.image" :alt="item.title" />
+    </a>
+    <ul class="text-start mt-3">
+      <li>
+        <strong>{{ $t('languages') }}: </strong>
+        {{ item.techLanguage }}
+      </li>
+      <li>
+        <strong>{{ $t('technologies') }}: </strong>
+        {{ item.techTools }}
+      </li>
+    </ul>
+    <p class="project-detail mt-4 text-start">
+      {{ $t(item.descriptionKey) }}
+    </p>
+    <div class="flex flex-col justify-center items-center gap-6 my-8">
+      <a
+        v-for="repo in item.repos"
+        :key="repo.url"
+        class="btn-m-0 text-uppercase"
+        :href="repo.url"
+        target="_blank"
+        rel="noopener"
+      >
+        {{ $t('seeGitHub') }}
+        <template v-if="item.repos.length > 1"> · {{ repo.label }}</template>
+      </a>
+      <a
+        v-for="link in item.links"
+        :key="link.url"
+        class="btn-m-0 text-uppercase"
+        :href="link.url"
+        target="_blank"
+        rel="noopener"
+      >
+        {{ $t('seeWebsite') }}
+        <template v-if="item.links && item.links.length > 1"> · {{ link.label }}</template>
+      </a>
     </div>
   </div>
 </template>
 
 <style scoped>
-  .project-detail-panel {
-    width: 85vw;
-    max-height: 90vh;
-    overflow: auto;
-    position: relative;
-    background: rgba(var(--ys-grey-700-rgb), 0.9);
-    border-radius: 0.5rem;
-  }
   .project-detail-content {
-    padding: 1.5rem;
+    padding: 0 1.5rem;
     border-radius: 0.5rem;
+
+    h3 {
+      color: var(--ys-primary-500);
+    }
   }
   .project-image {
     width: 75%;
@@ -114,51 +81,14 @@
     width: 75%;
   }
 
-  .close-btn {
-    color: rgba(var(--ys-grey-100-rgb), 0.6);
-    font-size: 2.5rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    margin: 1rem;
-    cursor: pointer;
-  }
-
   .btn-m-0 {
     width: 16rem;
-  }
-
-  .project-detail-panel::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 8px;
-  }
-  .project-detail-panel::-webkit-scrollbar-track {
-    background-color: rgba(var(--ys-grey-600-rgb), 0.2);
-    border-radius: 10px;
-  }
-  .project-detail-panel::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(var(--ys-grey-600-rgb), 0.6),
-      rgba(var(--ys-primary-500-rgb), 0.6),
-      rgba(var(--ys-grey-600-rgb), 0.6)
-    );
-    border-radius: 8px;
-  }
-  /* For Firefox */
-  .project-detail-panel {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(var(--ys-primary-500-rgb), 0.6) rgba(var(--ys-grey-600-rgb), 0.2);
   }
 
   @media (max-width: 768px) {
     .project-detail-content {
       padding: 0;
       border-radius: 0.5rem;
-    }
-    .close-btn {
-      color: rgba(var(--ys-grey-100-rgb), 0.6);
-      font-size: 1.5rem;
     }
     .project-image,
     .project-detail,

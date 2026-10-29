@@ -2,7 +2,7 @@ import type { ProjectItem } from '@models/project';
 
 export const projectItems: ProjectItem[] = [
   {
-    id: 9,
+    id: 'camagru',
     title: 'Camagru',
     subtitleKey: 'projects.items.camagru.subtitle',
     introKey: 'projects.items.camagru.intro',
@@ -13,7 +13,7 @@ export const projectItems: ProjectItem[] = [
     repos: [{ label: 'camagru', url: 'https://github.com/ysengoku/camagru' }],
   },
   {
-    id: 8,
+    id: 'portfolio',
     title: 'Portfolio Website',
     subtitleKey: 'projects.items.portfolio.subtitle',
     introKey: 'projects.items.portfolio.intro',
@@ -25,7 +25,7 @@ export const projectItems: ProjectItem[] = [
     repos: [{ label: 'ysengoku.github.io', url: 'https://github.com/ysengoku/ysengoku.github.io' }],
   },
   {
-    id: 1,
+    id: 'transcendence',
     title: 'ft_transcendence',
     subtitleKey: 'projects.items.transcendence.subtitle',
     introKey: 'projects.items.transcendence.intro',
@@ -36,7 +36,7 @@ export const projectItems: ProjectItem[] = [
     repos: [{ label: 'ft_transcendence', url: 'https://github.com/ysengoku/42-ft_transcendence' }],
   },
   {
-    id: 3,
+    id: 'docker-infra',
     title: 'Docker Infrastructure',
     subtitleKey: 'projects.items.dockerInfra.subtitle',
     introKey: 'projects.items.dockerInfra.intro',
@@ -50,7 +50,7 @@ export const projectItems: ProjectItem[] = [
     ],
   },
   {
-    id: 2,
+    id: 'irc',
     title: 'ft_irc',
     subtitleKey: 'projects.items.irc.subtitle',
     introKey: 'projects.items.irc.intro',
@@ -61,7 +61,7 @@ export const projectItems: ProjectItem[] = [
     repos: [{ label: 'ft_irc', url: 'https://github.com/faboussard/42-irc' }],
   },
   {
-    id: 10,
+    id: 'android',
     title: 'Android Apps',
     subtitleKey: 'projects.items.android.subtitle',
     introKey: 'projects.items.android.intro',
@@ -75,7 +75,7 @@ export const projectItems: ProjectItem[] = [
     ],
   },
   {
-    id: 6,
+    id: 'ios',
     title: 'iOS Apps',
     subtitleKey: 'projects.items.ios.subtitle',
     introKey: 'projects.items.ios.intro',
@@ -89,7 +89,7 @@ export const projectItems: ProjectItem[] = [
     ],
   },
   {
-    id: 4,
+    id: 'cub3d',
     title: 'Cub3D',
     subtitleKey: 'projects.items.cub3d.subtitle',
     introKey: 'projects.items.cub3d.intro',

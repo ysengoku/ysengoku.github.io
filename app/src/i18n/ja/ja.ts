@@ -30,6 +30,7 @@ export const ja = {
   projects: {
     label: 'Latest works',
     summary: '最近のプロジェクトの紹介',
+    closeDetail: 'プロジェクトの詳細を閉じる',
     items: projectsJa,
   },
   background: {

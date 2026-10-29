@@ -1,5 +1,5 @@
 export interface ProjectItem {
-  id: number;
+  id: string; // URL slug, used in ?p=
   title: string;
   subtitleKey: string;
   introKey: string;

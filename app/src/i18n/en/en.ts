@@ -29,6 +29,7 @@ export const en = {
   projects: {
     label: 'Latest works',
     summary: 'Explore my most recent projects and achievements.',
+    closeDetail: 'Hide project details',
     items: projectsEn,
   },
   background: {

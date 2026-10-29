@@ -1,17 +1,15 @@
 <script setup lang="ts">
+  import { useRouter } from 'vue-router';
   import type { ProjectItem } from '@models/project';
-  import { usePopupStore } from '@store/popup';
-
-  const popup = usePopupStore();
 
   const props = defineProps<{
     item: ProjectItem;
   }>();
 
+  const router = useRouter();
+
   function showDetail() {
-    popup.setType('project');
-    popup.setContentId(props.item.id);
-    popup.open();
+    router.replace({ query: { p: props.item.id } });
   }
 </script>
 
