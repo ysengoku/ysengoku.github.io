@@ -83,6 +83,7 @@ body {
   overflow-x: clip;
   display: block;
   background: var(--bg);
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -123,6 +124,9 @@ nav {
   height: 100%;
   overflow: hidden;
   background-color: var(--ys-secondary-600);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .popover-backdrop {

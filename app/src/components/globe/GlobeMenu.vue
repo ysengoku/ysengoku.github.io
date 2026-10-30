@@ -1,17 +1,145 @@
 <script setup lang="ts">
-  import { ref, onMounted, onUnmounted, watch } from 'vue';
+  import { ref, onMounted, onUnmounted, useTemplateRef, watch } from 'vue';
   import GlobeSpotButton from './GlobeSpotButton.vue';
-  import { GlobeRenderer } from '@globe/GlobeRenderer';
-  import { globeSpots } from '@data/globeData';
+  import { DragTracker } from '@globe/DragTracker';
   import { navigateWithTransition, prefersReducedMotion } from '@utils/viewTransition';
+  import { globeSpots } from '@data/globeData';
+  import { GlobeRenderer } from '@globe/GlobeRenderer';
+  import { spotAhead } from '@globe/rotation';
   import { useGlobeStore } from '@store/globe';
-  import type { SpotPlacement } from '@models/globe';
+  import { WheelTracker } from '@globe/WheelTracker';
+  import type { GlobeSpot, SpotPlacement } from '@models/globe';
+
+  // Rotation animation to a spot (ms)
+  const ROTATE_DURATION_MS = 600;
+  // Drag: degrees of longitude per pixel while dragging
+  const DRAG_DEG_PER_PX = 0.2;
 
   const globeStore = useGlobeStore();
   let renderer: GlobeRenderer | null = null;
+  let dragTracker: DragTracker | null = null;
+  const wheelTracker = new WheelTracker();
   let animationFrameId: number | null = null;
   const canvas = ref<HTMLCanvasElement | null>(null);
+  const stage = useTemplateRef<HTMLElement>('stage');
   const spotPlacements = ref<Array<SpotPlacement>>([]);
+  // The spot the globe has settled on; its card is shown only once the globe stops there
+  const arrivedSpotId = ref<GlobeSpot['id'] | null>(globeStore.currentSpotId);
+
+  let startRotation = [0, 0, 0] as [number, number, number];
+
+  const stopRotation = () => {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  };
+
+  const rotateTo = (spotId: GlobeSpot['id']) => {
+    if (!renderer) return;
+    stopRotation();
+    const from = renderer.currentRotation();
+    const to = renderer.rotationFor(spotId);
+    const startTime = performance.now();
+    const duration = prefersReducedMotion() ? 0 : ROTATE_DURATION_MS;
+    // Difference in longitude (lambda)
+    let lambdaDiff = to[0] - from[0];
+    // Wrap into -180..180 so the globe always turns the shorter way round
+    if (lambdaDiff > 180) lambdaDiff -= 360;
+    if (lambdaDiff < -180) lambdaDiff += 360;
+    // Difference in latitude (phi)
+    const phiDiff = to[1] - from[1];
+
+    // Already facing the spot (e.g. a click without dragging): no need to travel
+    if (Math.abs(lambdaDiff) < 0.01 && Math.abs(phiDiff) < 0.01) {
+      arrivedSpotId.value = spotId;
+      return;
+    }
+    // Hide the card while travelling
+    arrivedSpotId.value = null;
+
+    const frame = (now: number) => {
+      if (!renderer) return;
+      // Progress from 0 to 1 (jumps straight to 1 when motion is reduced)
+      const time = duration ? Math.min(1, (now - startTime) / duration) : 1;
+      renderer.drawAt([from[0] + lambdaDiff * time, from[1] + phiDiff * time, from[2]]);
+      spotPlacements.value = renderer.getSpotPlacements();
+      if (time < 1) {
+        animationFrameId = requestAnimationFrame(frame);
+        return;
+      }
+      // Arrived: show the card
+      arrivedSpotId.value = spotId;
+      if (globeStore.pendingPage) {
+        navigateWithTransition(`/${globeStore.pendingPage}`);
+        globeStore.$patch({ pendingPage: null });
+      }
+    };
+    animationFrameId = requestAnimationFrame(frame);
+  };
+
+  const startDrag = (e: PointerEvent) => {
+    // Ignore right click, click footer and button
+    if (
+      !stage.value ||
+      e.button !== 0 ||
+      (e.target as Element).closest('footer') ||
+      (e.target as Element).closest('button')
+    ) {
+      return;
+    }
+
+    stopRotation();
+    stage.value.setPointerCapture(e.pointerId);
+    dragTracker = new DragTracker(e.clientX, e.timeStamp);
+    startRotation = renderer?.currentRotation() ?? [0, 0, 0];
+  };
+
+  const moveDrag = (e: PointerEvent) => {
+    if (!dragTracker || !renderer) return;
+
+    const dx = dragTracker.dx(e.clientX);
+    const [lambda, phi, gamma] = startRotation;
+    // Hide the card while the globe is being dragged
+    if (dx !== 0 && arrivedSpotId.value) arrivedSpotId.value = null;
+    // Only the longitude follows the pointer; latitude and tilt stay as they were
+    renderer.drawAt([lambda + dx * DRAG_DEG_PER_PX, phi, gamma]);
+    // Keep the pins on their spots while the globe turns
+    spotPlacements.value = renderer.getSpotPlacements();
+  };
+
+  const endDrag = (e: PointerEvent) => {
+    if (!dragTracker) return;
+
+    const dir = dragTracker.direction(e.clientX, e.timeStamp);
+    dragTracker = null;
+    if (dir === 0) {
+      rotateTo(globeStore.currentSpotId);
+      return;
+    }
+
+    if (!renderer) return;
+    const currentLambda = renderer.currentRotation()[0];
+    const target = spotAhead(currentLambda, dir, globeStore.currentSpotId, (id) =>
+      renderer!.rotationFor(id)
+    );
+    globeStore.updateCurrentSpot(target);
+  };
+
+  const onWheel = (e: WheelEvent) => {
+    // Keep horizontal swipes from triggering the browser's back/forward gesture
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) e.preventDefault();
+
+    switch (wheelTracker.track(e.deltaX, e.timeStamp)) {
+      case 0:
+        return;
+      case 1:
+        globeStore.goToNextSpot();
+        return;
+      case -1:
+        globeStore.goToPreviousSpot();
+    }
+  };
 
   const handleResize = () => {
     if (!renderer) return;
@@ -21,10 +149,8 @@
   };
 
   onMounted(() => {
-    const stage = document.getElementById('stage');
-    if (!canvas.value || !stage) return;
-
-    renderer = new GlobeRenderer(canvas.value, stage);
+    if (!canvas.value || !stage.value) return;
+    renderer = new GlobeRenderer(canvas.value, stage.value);
     renderer.drawAt(renderer.rotationFor(globeStore.currentSpotId));
     spotPlacements.value = renderer.getSpotPlacements();
 
@@ -33,60 +159,45 @@
 
   onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
-    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    stopRotation();
   });
 
   watch(
     () => globeStore.currentSpotId,
     (newId) => {
-      if (!renderer) return;
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-      }
-      const start = renderer.currentRotation();
-      const end = renderer.rotationFor(newId);
-      const startTime = performance.now();
-      const duration = prefersReducedMotion() ? 0 : 600;
-      let lambdaDiff = end[0] - start[0];
-      if (lambdaDiff > 180) lambdaDiff -= 360;
-      if (lambdaDiff < -180) lambdaDiff += 360;
-      const phiDiff = end[1] - start[1];
-
-      const frame = (now: number) => {
-        if (!renderer) return;
-        const time = duration ? Math.min(1, (now - startTime) / duration) : 1;
-        renderer.drawAt([start[0] + lambdaDiff * time, start[1] + phiDiff * time, start[2]]);
-        spotPlacements.value = renderer.getSpotPlacements();
-        if (time < 1) {
-          animationFrameId = requestAnimationFrame(frame);
-        }
-        if (time >= 1 && globeStore.pendingPage) {
-          navigateWithTransition(`/${globeStore.pendingPage}`);
-          globeStore.$patch({ pendingPage: null });
-        }
-      };
-      animationFrameId = requestAnimationFrame(frame);
+      rotateTo(newId);
     }
   );
 </script>
 
 <template>
-  <div class="sky" aria-hidden="true">
-    <div class="sky-layer"></div>
-    <div class="sky-layer"></div>
-    <div class="sky-layer"></div>
-  </div>
-  <canvas id="globe" ref="canvas" aria-hidden="true"></canvas>
-  <div id="pins" class="pins">
-    <GlobeSpotButton
-      v-for="(item, index) in globeSpots"
-      :key="item.id"
-      :spot="item"
-      :placement="spotPlacements[index]"
-      :active="item.id === globeStore.currentSpotId"
-    />
-  </div>
+  <section
+    id="stage"
+    ref="stage"
+    class="flex flex-col"
+    @pointerdown="startDrag"
+    @pointermove="moveDrag"
+    @pointerup="endDrag"
+    @pointercancel="endDrag"
+    @wheel="onWheel"
+  >
+    <div class="sky" aria-hidden="true">
+      <div class="sky-layer"></div>
+      <div class="sky-layer"></div>
+      <div class="sky-layer"></div>
+    </div>
+    <canvas id="globe" ref="canvas" aria-hidden="true"></canvas>
+    <div id="pins" class="pins">
+      <GlobeSpotButton
+        v-for="(item, index) in globeSpots"
+        :key="item.id"
+        :spot="item"
+        :placement="spotPlacements[index]"
+        :active="item.id === arrivedSpotId"
+      />
+    </div>
+    <slot />
+  </section>
 </template>
 
 <style scoped>
