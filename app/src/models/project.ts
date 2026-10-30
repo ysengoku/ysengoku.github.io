@@ -6,8 +6,8 @@ export interface ProjectItem {
   image: string;
   links?: ProjectLink[];
   descriptionKey: string;
-  techLanguage: string;
-  techTools: string;
+  languages: string[];
+  tools: string[];
   repos: ProjectLink[];
 }
 

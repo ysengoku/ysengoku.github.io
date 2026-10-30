@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import ProjectStackTag from './ProjectStackTag.vue';
   import type { ProjectItem } from '@models/project';
 
   defineProps<{ item: ProjectItem }>();
@@ -23,12 +24,10 @@
     </a>
     <ul class="text-start mt-3">
       <li>
-        <strong>{{ $t('languages') }}: </strong>
-        {{ item.techLanguage }}
+        <ProjectStackTag v-for="lang in item.languages" :key="lang" :value="lang" type="language" />
       </li>
       <li>
-        <strong>{{ $t('technologies') }}: </strong>
-        {{ item.techTools }}
+        <ProjectStackTag v-for="lang in item.tools" :key="lang" :value="lang" type="tool" />
       </li>
     </ul>
     <p class="project-detail mt-4 text-start">
@@ -38,7 +37,7 @@
       <a
         v-for="repo in item.repos"
         :key="repo.url"
-        class="btn-m-0 text-uppercase"
+        class="btn text-uppercase"
         :href="repo.url"
         target="_blank"
         rel="noopener"
@@ -49,7 +48,7 @@
       <a
         v-for="link in item.links"
         :key="link.url"
-        class="btn-m-0 text-uppercase"
+        class="btn text-uppercase"
         :href="link.url"
         target="_blank"
         rel="noopener"
@@ -79,10 +78,6 @@
   .project-detail,
   ul {
     width: 75%;
-  }
-
-  .btn-m-0 {
-    width: 16rem;
   }
 
   @media (max-width: 768px) {
