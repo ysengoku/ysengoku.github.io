@@ -100,6 +100,12 @@ app
 
 ![Latest Release](https://img.shields.io/github/v/release/ysengoku/ysengoku.github.io?style=flat)
 
+#### v3.1.0
+
+- Drag or swipe on the trackpad to rotate the globe between spots
+- Spot cards appear once the globe stops on a spot
+- Project details open under the project list with a shareable URL, and show languages and tools as tags
+
 ####  v3.0.1
 
 - Faster first load (WebP images, SVG icons, lighter fonts and map data, lazy-loaded pages)
