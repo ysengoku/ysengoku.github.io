@@ -57,7 +57,7 @@
 
 <template>
   <section id="projects" ref="container" class="py-16">
-    <div class="projects-container">
+    <div class="projects-container sm:mx-4 mx-2 my-0">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold uppercase tracking-wide">{{ $t('projects.label') }}</h2>
         <h3 class="mt-2">{{ $t('projects.summary') }}</h3>
@@ -92,9 +92,9 @@
 </template>
 
 <style scoped>
-  .projects-container {
+  /* .projects-container {
     margin: 0 4rem;
-  }
+  } */
 
   .ui-carousel .swiper-slide {
     transition: transform 0.3s ease;
