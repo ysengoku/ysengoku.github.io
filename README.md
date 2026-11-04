@@ -100,6 +100,10 @@ app
 
 ![Latest Release](https://img.shields.io/github/v/release/ysengoku/ysengoku.github.io?style=flat)
 
+#### v3.1.1
+
+- Smaller side margins on the Projects section on mobile
+
 #### v3.1.0
 
 - Drag or swipe on the trackpad to rotate the globe between spots
